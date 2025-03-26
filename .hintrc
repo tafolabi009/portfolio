@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "color: color-mix(in lab, var(--text) 80%, transparent)"
+        ]
+      }
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not ios_saf <= 16.7",
+    "not chrome <= 109"
+  ]
+}
