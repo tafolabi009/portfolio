@@ -9,9 +9,9 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
-    "start": "node ./build/server/index.js", // Vercel will run this
+    "start": "node ./build/server/index.js", 
     "postinstall": "node ./scripts/draco.cjs",
-    "vercel-build": "npm run build" // Optional: Custom build command for Vercel
+    "vercel-build": "npm run build" 
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.515.0",
