@@ -1,3 +1,9 @@
-kv_namespaces = [
-  { id = "MY_KV", binding="MY_KV" }
-]
+name = "portfolio"
+compatibility_date = "2024-04-22"
+
+[build]
+command = "npm run build"
+root = "."
+
+[env.production]
+pages_build_output_dir = "./build"
