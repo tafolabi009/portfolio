@@ -1,17 +1,17 @@
 {
   "name": "portfolio",
-  "homepage": "https://folabi-portfolio.pages.dev",
-  "description": "Portfolio site for Afolabi",
-  "repository": "https://github.com/tafolabi009/portfolio.git",
-  "author": "Afolabi Oluwatosin",
+  "homepage": "https://hamishw.com",
+  "description": "Portfolio site for Hamish Williams",
+  "repository": "https://github.com/HamishMW/portfolio.git",
+  "author": "Hamish Williams",
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
-    "start": "node ./build/server/index.js", 
+    "start": "node ./build/server/index.js",
     "postinstall": "node ./scripts/draco.cjs",
-    "vercel-build": "npm run build" 
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.515.0",
@@ -26,6 +26,7 @@
     "react-dom": "^18.2.0",
     "rehype-img-size": "^1.0.1",
     "rehype-slug": "^6.0.0",
+    "remark-frontmatter": "^5.0.0",
     "three": "^0.161.0",
     "three-stdlib": "^2.29.4"
   },
@@ -40,7 +41,7 @@
     "@storybook/addon-links": "^7.6.17",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "vite-jsconfig-paths": "^2.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vite-jsconfig-paths": "^2.0.1"
   }
 }
