@@ -1,5 +1,5 @@
 .intro {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 .text {
-  max-width: 1024px;
+  max-width: 900px;
   width: 100%;
   position: relative;
   top: calc(var(--spaceL) * -1);
@@ -35,7 +35,7 @@
 
 .name {
   text-transform: uppercase;
-  font-size: calc((24 / 16) * 1rem);
+  font-size: calc((24 / 20) * 1rem);
   letter-spacing: 0.3em;
   color: var(--textLight);
   margin-bottom: var(--space2XL);

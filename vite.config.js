@@ -15,6 +15,8 @@ export default defineConfig({
   assetsInclude: ['**/*.glb', '**/*.hdr', '**/*.glsl'],
   build: {
     assetsInlineLimit: 1024,
+    target: 'esnext',
+    ssr: 'entry.server.tsx', // Custom SSR entry
   },
   server: {
     port: 7777,
@@ -27,8 +29,9 @@ export default defineConfig({
     }),
     remixCloudflareDevProxy(),
     remix({
+      ssr: 'entry.server.tsx', // Tell Remix to use custom entry
       routes(defineRoutes) {
-        return defineRoutes(route => {
+        return defineRoutes((route) => {
           route('/', 'routes/home/route.js', { index: true });
         });
       },

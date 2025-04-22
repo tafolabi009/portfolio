@@ -101,7 +101,7 @@ export const SmartSparrow = () => {
         <ProjectHeader
           title={title}
           description={description}
-          url="https://www.github.com/tafolabi009/graphing-calculator"
+          url="https://www.github.com/tafolabi009/calculator"
           roles={roles}
         />
         <ProjectSection padding="top">
@@ -144,7 +144,7 @@ export const SmartSparrow = () => {
                   : `${imageSprComponentsLight} 1024w, ${imageSprComponentsLightLarge} 2048w`
               }
               width={1024}
-              hright={800}
+              height={800}
               placeholder={
                 isDark
                   ? imageSprComponentsDarkPlaceholder

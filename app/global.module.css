@@ -1,19 +1,42 @@
-@custom-media --mediaDesktop (max-width: 2080px);
-@custom-media --mediaLaptop (max-width: 1680px);
-@custom-media --mediaTablet (max-width: 1040px);
-@custom-media --mediaMobile (max-width: 696px);
-@custom-media --mediaMobileLS (max-height: 696px);
+/* Improved media query definitions with clearer naming and more breakpoints */
+@custom-media --mediaDesktop (min-width: 1681px);
+@custom-media --mediaLaptop (min-width: 1041px) and (max-width: 1680px);
+@custom-media --mediaTablet (min-width: 681px) and (max-width: 1040px);
+@custom-media --mediaMobile (max-width: 680px);
+@custom-media --mediaMobileLandscape (max-width: 680px) and (orientation: landscape);
+@custom-media --mediaMobilePortrait (max-width: 680px) and (orientation: portrait);
 @custom-media --mediaMobileS (max-width: 400px);
 @custom-media --mediaUseMotion (prefers-reduced-motion: no-preference);
 @custom-media --mediaReduceMotion (prefers-reduced-motion: reduce);
 @custom-media --mediaTouch (pointer: coarse);
 @custom-media --mediaNoTouch (pointer: fine);
+@custom-media --mediaDarkMode (prefers-color-scheme: dark);
+@custom-media --mediaLightMode (prefers-color-scheme: light);
+@custom-media --mediaHighContrast (prefers-contrast: high);
 
+/* Root variables for responsive units */
 @layer base {
   :global(:root) {
     --mobileNavOffset: calc(var(--spaceOuter) * 2 + var(--space2XL));
+    
+    /* Responsive font size variables */
+    --baseFontSize: 16px;
+    --fontSizeScaleMobile: 0.9;
+    --fontSizeScaleTablet: 0.95;
+    
+    /* Responsive spacing variables */
+    --spacingBase: 1rem;
+    --spacingScaleMobile: 0.8;
+    --spacingScaleTablet: 0.9;
+    
+    /* Safe areas for notched devices */
+    --safeAreaInsetTop: env(safe-area-inset-top, 0px);
+    --safeAreaInsetRight: env(safe-area-inset-right, 0px);
+    --safeAreaInsetBottom: env(safe-area-inset-bottom, 0px);
+    --safeAreaInsetLeft: env(safe-area-inset-left, 0px);
   }
-
+  
+  /* Improved base styling */
   :global(html, body) {
     font-family: var(--fontStack);
     font-weight: var(--fontWeightRegular);
@@ -21,59 +44,130 @@
     transition: var(--durationM) ease;
     transition-property: background, opacity;
     color: var(--textBody);
-    width: 100vw;
+    width: 100%;
+    height: 100%;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
     opacity: 1;
-
+    -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+    
     &:focus {
       outline: none;
     }
   }
-
+  
+  /* Set box-sizing globally */
+  :global(*, *::before, *::after) {
+    box-sizing: inherit;
+  }
+  
+  /* Ensure images are responsive */
+  :global(img, picture, video, canvas, svg) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Reset form elements to use font inheriting */
+  :global(input, button, textarea, select) {
+    font: inherit;
+  }
+  
+  /* Code styling */
   :global(:where(code, pre)) {
     font-family: var(--monoFontStack);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
-
+  
+  /* Selection styling */
   :global(::selection) {
     background: var(--accent);
     color: var(--black);
   }
-
+  
+  /* Focus states */
   :global(:focus) {
     outline: 4px solid var(--text);
     outline-offset: 4px;
   }
-
+  
   :global(:focus:not(:focus-visible)) {
     outline: none;
   }
-
+  
+  /* Touch area enhancements */
+  @media (--mediaTouch) {
+    :global(button, a, input[type="button"], input[type="submit"], [role="button"]) {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    :global(input, select, textarea) {
+      font-size: 16px; /* Prevents zoom on focus in iOS */
+    }
+  }
+  
+  /* Responsive typography adjustments */
+  @media (--mediaMobile) {
+    :global(html) {
+      font-size: calc(var(--baseFontSize) * var(--fontSizeScaleMobile));
+    }
+  }
+  
+  @media (--mediaTablet) {
+    :global(html) {
+      font-size: calc(var(--baseFontSize) * var(--fontSizeScaleTablet));
+    }
+  }
+  
+  /* Handle viewport height issues on mobile */
+  @media (--mediaMobile) {
+    :global(:root) {
+      --vh: 1vh;
+    }
+    
+    :global(.use-viewport-height) {
+      height: calc(var(--vh) * 100);
+    }
+  }
+  
+  /* Safe area padding helper classes */
+  :global(.safe-area-padding) {
+    padding-top: var(--safeAreaInsetTop);
+    padding-right: var(--safeAreaInsetRight);
+    padding-bottom: var(--safeAreaInsetBottom);
+    padding-left: var(--safeAreaInsetLeft);
+  }
+  
+  /* Animation keyframes */
   @keyframes :global(fade-in) {
     0% {
       opacity: 0;
     }
-
     100% {
       opacity: 1;
     }
   }
-
+  
   @keyframes :global(reveal) {
     0% {
       transform: scale3d(0, 1, 1);
       transform-origin: left;
     }
-
     50% {
       transform: scale3d(1, 1, 1);
       transform-origin: left;
     }
-
     51% {
       transform: scale3d(1, 1, 1);
       transform-origin: right;
     }
-
     100% {
       transform: scale3d(0, 1, 1);
       transform-origin: right;
