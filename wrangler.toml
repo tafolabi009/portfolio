@@ -1,0 +1,38 @@
+name = "remix-app"
+compatibility_date = "2024-04-22"
+compatibility_flags = ["streams_enable_constructors"]
+
+account_id = "your-account-id"     # Replace this
+workers_dev = true                 # Set to false if using custom domain
+main = "dist/entry.server.js"      # Must match Vite output path
+type = "javascript"
+
+[site]
+bucket = "./public"
+
+[build]
+command = "vite build"
+watch_dir = "app"
+
+[upload]
+format = "modules"
+
+[dev]
+port = 7777
+local_protocol = "http"
+
+[env.production]
+# Production-specific KV, DO, etc. go here
+
+[[kv_namespaces]]
+binding = "MY_KV"
+id = "your-kv-id"
+preview_id = "your-preview-kv-id"
+
+[[durable_objects.bindings]]
+name = "SESSION_DO"
+class_name = "SessionDO"
+
+[[migrations]]
+tag = "v1" # Required if Durable Objects are used
+new_classes = ["SessionDO"]
