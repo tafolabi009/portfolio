@@ -17,18 +17,21 @@ import styles from './profile.module.css';
 const ProfileText = ({ visible, titleId }) => (
   <Fragment>
     <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
-      <DecoderText text="Hi there" start={visible} delay={500} />
+      <DecoderText text="Hi, I'm Afolabi" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Folabi, currently I live in Nigeria working as a Freelancer. I have a passion for creating seamless user experiences. I’ve worked with a variety of companies, from startups to large corporations. 
-       My projects include ML models, Softwares, and Web apps. Being comfortable with code allows me to rapidly
-      create and validate experiences. If you’re interested in the tools and software I
-      use check out my <Link href="/uses">uses page</Link>.
+      I'm an AI/ML Engineer, Software Developer, and Cybersecurity Specialist with 5+ years of experience building scalable, secure systems. 
+      As the Founder of Genovo Technologies, I specialize in solving complex problems in underserved markets using modern ML, 
+      cloud-native infrastructure, and systems-level engineering.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      In my spare time I like to code, play video games, and{' '}
-      build new complicated things. I’m always down for hearing
-      about new projects, so feel free to drop me a line. Don't mind my very old picture.
+      I have a proven track record of delivering production-grade AI systems, developer tools, and technical leadership in high-velocity environments. 
+      My expertise spans across ML/AI, Backend Development, Cloud & DevOps, and Cybersecurity. Feel free to check out my{' '}
+      <Link href="/uses">tech stack</Link> and <Link href="/projects">projects</Link>.
+    </Text>
+    <Text className={styles.description} data-visible={visible} size="l" as="p">
+      When I'm not coding, I enjoy playing chess, contributing to open-source projects, and mentoring other developers. 
+      I'm always excited to hear about new projects and opportunities for collaboration.
     </Text>
   </Fragment>
 );

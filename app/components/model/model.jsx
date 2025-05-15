@@ -52,6 +52,7 @@ const rotationSpringConfig = {
   damping: 20,
   mass: 1.4,
   restSpeed: 0.001,
+  velocity: 0,
 };
 
 export const Model = ({
@@ -87,6 +88,32 @@ export const Model = ({
   const reduceMotion = useReducedMotion();
   const rotationX = useSpring(0, rotationSpringConfig);
   const rotationY = useSpring(0, rotationSpringConfig);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 680);
+    };
+    
+    const checkReducedMotion = () => {
+      setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    };
+    
+    checkMobile();
+    checkReducedMotion();
+    
+    const mobileQuery = window.matchMedia('(max-width: 680px)');
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    mobileQuery.addEventListener('change', checkMobile);
+    motionQuery.addEventListener('change', checkReducedMotion);
+    
+    return () => {
+      mobileQuery.removeEventListener('change', checkMobile);
+      motionQuery.removeEventListener('change', checkReducedMotion);
+    };
+  }, []);
 
   useEffect(() => {
     const { clientWidth, clientHeight } = container.current;
@@ -94,12 +121,12 @@ export const Model = ({
     renderer.current = new WebGLRenderer({
       canvas: canvas.current,
       alpha: true,
-      antialias: false,
+      antialias: !isMobile,
       powerPreference: 'high-performance',
       failIfMajorPerformanceCaveat: true,
     });
 
-    renderer.current.setPixelRatio(2);
+    renderer.current.setPixelRatio(isMobile ? 1 : 2);
     renderer.current.setSize(clientWidth, clientHeight);
     renderer.current.outputColorSpace = SRGBColorSpace;
 
@@ -110,117 +137,76 @@ export const Model = ({
     modelGroup.current = new Group();
     scene.current.add(modelGroup.current);
 
-    // Lighting
+    // Enhanced lighting
     const ambientLight = new AmbientLight(0xffffff, 1.2);
     const keyLight = new DirectionalLight(0xffffff, 1.1);
     const fillLight = new DirectionalLight(0xffffff, 0.8);
+    const rimLight = new DirectionalLight(0xffffff, 0.5);
 
-    fillLight.position.set(-6, 2, 2);
-    keyLight.position.set(0.5, 0, 0.866);
-    lights.current = [ambientLight, keyLight, fillLight];
+    keyLight.position.set(5, 5, 5);
+    fillLight.position.set(-5, 5, -5);
+    rimLight.position.set(0, -5, 5);
+
+    lights.current = [ambientLight, keyLight, fillLight, rimLight];
     lights.current.forEach(light => scene.current.add(light));
 
-    // The shadow container, if you need to move the plane just move this
-    shadowGroup.current = new Group();
-    scene.current.add(shadowGroup.current);
-    shadowGroup.current.position.set(0, 0, -0.8);
-    shadowGroup.current.rotateX(Math.PI / 2);
-
-    const renderTargetSize = 512;
-    const planeWidth = 8;
-    const planeHeight = 8;
-    const cameraHeight = 1.5;
-    const shadowOpacity = 0.8;
-    const shadowDarkness = 3;
-
-    // The render target that will show the shadows in the plane texture
-    renderTarget.current = new WebGLRenderTarget(renderTargetSize, renderTargetSize);
-    renderTarget.current.texture.generateMipmaps = false;
-
-    // The render target that we will use to blur the first render target
-    renderTargetBlur.current = new WebGLRenderTarget(renderTargetSize, renderTargetSize);
-    renderTargetBlur.current.texture.generateMipmaps = false;
-
-    // Make a plane and make it face up
-    const planeGeometry = new PlaneGeometry(planeWidth, planeHeight).rotateX(Math.PI / 2);
-
-    const planeMaterial = new MeshBasicMaterial({
-      map: renderTarget.current.texture,
-      opacity: shadowOpacity,
-      transparent: true,
-    });
-
-    plane.current = new Mesh(planeGeometry, planeMaterial);
-    // The y from the texture is flipped!
-    plane.current.scale.y = -1;
-    shadowGroup.current.add(plane.current);
-
-    // The plane onto which to blur the texture
-    blurPlane.current = new Mesh(planeGeometry);
-    blurPlane.current.visible = false;
-    shadowGroup.current.add(blurPlane.current);
-
-    // The plane with the color of the ground
-    const fillMaterial = new MeshBasicMaterial({
-      color: 0xffffff,
-      opacity: 0,
-      transparent: true,
-    });
-
-    fillPlane.current = new Mesh(planeGeometry, fillMaterial);
-    fillPlane.current.rotateX(Math.PI);
-    fillPlane.current.position.y -= 0.00001;
-    shadowGroup.current.add(fillPlane.current);
-
-    // The camera to render the depth material from
-    shadowCamera.current = new OrthographicCamera(
-      -planeWidth / 2,
-      planeWidth / 2,
-      planeHeight / 2,
-      -planeHeight / 2,
-      0,
-      cameraHeight
-    );
-    // Get the camera to look up
-    shadowCamera.current.rotation.x = Math.PI / 2;
-    shadowGroup.current.add(shadowCamera.current);
-
-    // Like MeshDepthMaterial, but goes from black to transparent
-    depthMaterial.current = new MeshDepthMaterial();
-    depthMaterial.current.userData.darkness = { value: shadowDarkness };
-    depthMaterial.current.onBeforeCompile = shader => {
-      shader.uniforms.darkness = depthMaterial.current.userData.darkness;
-      shader.fragmentShader = `
-        uniform float darkness;
-        ${shader.fragmentShader.replace(
-          'gl_FragColor = vec4( vec3( 1.0 - fragCoordZ ), opacity );',
-          'gl_FragColor = vec4( vec3( 0.0 ), ( 1.0 - fragCoordZ ) * darkness );'
-        )}
-      `;
-    };
-    depthMaterial.current.depthTest = false;
-    depthMaterial.current.depthWrite = false;
-
-    horizontalBlurMaterial.current = new ShaderMaterial(HorizontalBlurShader);
-    horizontalBlurMaterial.current.depthTest = false;
-
-    verticalBlurMaterial.current = new ShaderMaterial(VerticalBlurShader);
-    verticalBlurMaterial.current.depthTest = false;
-
-    const unsubscribeX = rotationX.on('change', renderFrame);
-    const unsubscribeY = rotationY.on('change', renderFrame);
+    // Shadow setup with enhanced quality
+    setupShadow();
 
     return () => {
-      renderTarget.current.dispose();
-      renderTargetBlur.current.dispose();
-      removeLights(lights.current);
       cleanScene(scene.current);
       cleanRenderer(renderer.current);
-      unsubscribeX();
-      unsubscribeY();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [cameraPosition, isMobile]);
+
+  // Enhanced mouse move animation with smoother transitions
+  useEffect(() => {
+    const onMouseMove = throttle(event => {
+      if (isReducedMotion || !isInViewport || isMobile) return;
+
+      const { innerWidth, innerHeight } = window;
+      const position = {
+        x: (event.clientX - innerWidth / 2) / innerWidth,
+        y: (event.clientY - innerHeight / 2) / innerHeight,
+      };
+
+      // Smoother rotation with easing
+      rotationY.set(position.x / 2.5);
+      rotationX.set(position.y / 2.5);
+    }, 100);
+
+    if (isInViewport && !isReducedMotion && !isMobile) {
+      window.addEventListener('mousemove', onMouseMove);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+    };
+  }, [isInViewport, isReducedMotion, rotationX, rotationY, isMobile]);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (!container.current) return;
+
+      const { clientWidth, clientHeight } = container.current;
+      const isMobileNow = clientWidth <= 680;
+
+      renderer.current.setPixelRatio(isMobileNow ? 1 : 2);
+      renderer.current.setSize(clientWidth, clientHeight);
+      camera.current.aspect = clientWidth / clientHeight;
+      camera.current.updateProjectionMatrix();
+
+      renderFrame();
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [renderFrame]);
 
   const blurShadow = useCallback(amount => {
     blurPlane.current.visible = true;
@@ -279,51 +265,6 @@ export const Model = ({
     renderer.current.render(scene.current, camera.current);
   }, [blurShadow, rotationX, rotationY]);
 
-  // Handle mouse move animation
-  useEffect(() => {
-    const onMouseMove = throttle(event => {
-      const { innerWidth, innerHeight } = window;
-
-      const position = {
-        x: (event.clientX - innerWidth / 2) / innerWidth,
-        y: (event.clientY - innerHeight / 2) / innerHeight,
-      };
-
-      rotationY.set(position.x / 2);
-      rotationX.set(position.y / 2);
-    }, 100);
-
-    if (isInViewport && !reduceMotion) {
-      window.addEventListener('mousemove', onMouseMove);
-    }
-
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-    };
-  }, [isInViewport, reduceMotion, rotationX, rotationY]);
-
-  // Handle window resize
-  useEffect(() => {
-    const handleResize = () => {
-      if (!container.current) return;
-
-      const { clientWidth, clientHeight } = container.current;
-
-      renderer.current.setSize(clientWidth, clientHeight);
-      camera.current.aspect = clientWidth / clientHeight;
-      camera.current.updateProjectionMatrix();
-
-      renderFrame();
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [renderFrame]);
-
   return (
     <div
       className={classes(styles.model, className)}
@@ -375,7 +316,6 @@ const Device = ({
       texture.anisotropy = renderer.current.capabilities.getMaxAnisotropy();
       texture.generateMipmaps = false;
 
-      // Decode the texture to prevent jank on first render
       await renderer.current.initTexture(texture);
 
       node.material.color = new Color(0xffffff);
@@ -383,7 +323,6 @@ const Device = ({
       node.material.map = texture;
     };
 
-    // Generate promises to await when ready
     const load = async () => {
       const { texture, position, url } = model;
       let loadFullResTexture;
@@ -398,12 +337,14 @@ const Device = ({
 
       gltf.scene.traverse(async node => {
         if (node.material) {
+          // Enhanced material properties
           node.material.color = new Color(0x1f2025);
+          node.material.metalness = 0.5;
+          node.material.roughness = 0.5;
+          node.material.envMapIntensity = 1;
         }
 
         if (node.name === MeshType.Screen) {
-          // Create a copy of the screen mesh so we can fade it out
-          // over the full resolution screen texture
           placeholderScreen.current = node.clone();
           placeholderScreen.current.material = node.material.clone();
           node.parent.add(placeholderScreen.current);
@@ -417,7 +358,10 @@ const Device = ({
             const fullSize = await textureLoader.loadAsync(image);
             await applyScreenTexture(fullSize, node);
 
+            // Enhanced fade animation
             animate(1, 0, {
+              duration: 0.5,
+              ease: [0.4, 0, 0.2, 1],
               onUpdate: value => {
                 placeholderScreen.current.material.opacity = value;
                 renderFrame();
@@ -433,7 +377,7 @@ const Device = ({
         gltf.scene.position.set(...targetPosition.toArray());
       }
 
-      // Simple slide up animation
+      // Enhanced animations
       if (model.animation === ModelAnimationType.SpringUp) {
         playAnimation = () => {
           const startPosition = new Vector3(
@@ -460,7 +404,6 @@ const Device = ({
         };
       }
 
-      // Swing the laptop lid open
       if (model.animation === ModelAnimationType.LaptopOpen) {
         playAnimation = () => {
           const frameNode = gltf.scene.children.find(
@@ -491,8 +434,6 @@ const Device = ({
     };
 
     setLoadDevice({ start: load });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -523,7 +464,6 @@ const Device = ({
     return () => {
       animation?.stop();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadDevice, show]);
 };
 

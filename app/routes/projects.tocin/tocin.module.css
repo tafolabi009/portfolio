@@ -1,0 +1,266 @@
+.tocin {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: var(--colorBackground);
+  color: var(--colorText);
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.intro {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.title[data-visible='true'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.description {
+  font-size: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+}
+
+.description[data-visible='true'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+}
+
+.links[data-visible='true'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.githubButton,
+.demoButton {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.githubButton {
+  background: var(--colorBackgroundAlt);
+  color: var(--colorText);
+}
+
+.demoButton {
+  background: var(--colorPrimary);
+  color: white;
+}
+
+.githubButton:hover,
+.demoButton:hover {
+  transform: translateY(-2px);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.stat {
+  text-align: center;
+  padding: 30px;
+  background: var(--colorBackgroundAlt);
+  border-radius: 8px;
+  box-shadow: var(--shadowMd);
+}
+
+.stat h3 {
+  font-size: 2.5rem;
+  color: var(--colorPrimary);
+  margin-bottom: 10px;
+}
+
+.details,
+.features,
+.techStack,
+.challenges,
+.demo,
+.cta {
+  padding: 80px 0;
+}
+
+.featureList,
+.techList,
+.challengeList {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.featureList li,
+.techList li,
+.challengeList li {
+  background: var(--colorBackgroundAlt);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: var(--shadowMd);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureList li:hover,
+.techList li:hover,
+.challengeList li:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadowLg);
+}
+
+.featureList h3,
+.techList h3,
+.challengeList h3 {
+  color: var(--colorPrimary);
+  margin-bottom: 15px;
+}
+
+.demoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.demoCode {
+  background: var(--colorBackgroundAlt);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: var(--shadowMd);
+  overflow-x: auto;
+}
+
+.demoCode pre {
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--colorText);
+}
+
+.demoCode code {
+  display: block;
+  white-space: pre;
+}
+
+.demoStats {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cta {
+  text-align: center;
+  background: var(--colorBackgroundAlt);
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.button {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  background: var(--colorPrimary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background: var(--colorPrimaryDark);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .tocin {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .intro {
+    padding: 60px 0;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1.2rem;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .details,
+  .features,
+  .techStack,
+  .challenges,
+  .demo,
+  .cta {
+    padding: 40px 0;
+  }
+
+  .featureList,
+  .techList,
+  .challengeList {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .demoContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .description,
+  .links,
+  .featureList li,
+  .techList li,
+  .challengeList li,
+  .button {
+    transition: none;
+  }
+} 

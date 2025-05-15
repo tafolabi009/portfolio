@@ -16,20 +16,26 @@ export default defineConfig({
   build: {
     assetsInlineLimit: 1024,
     target: 'esnext',
-    ssr: 'entry.server.tsx', // Custom SSR entry
+    ssr: true,
   },
   server: {
     port: 7777,
   },
   plugins: [
     mdx({
-      rehypePlugins: [[rehypeImgSize, { dir: 'public' }], rehypeSlug, rehypePrism],
-      remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+      rehypePlugins: [
+        [rehypeImgSize, { dir: 'public' }],
+        rehypeSlug,
+        rehypePrism
+      ],
+      remarkPlugins: [
+        remarkFrontmatter,
+        remarkMdxFrontmatter
+      ],
       providerImportSource: '@mdx-js/react',
     }),
     remixCloudflareDevProxy(),
     remix({
-      ssr: 'entry.server.tsx', // Tell Remix to use custom entry
       routes(defineRoutes) {
         return defineRoutes((route) => {
           route('/', 'routes/home/route.js', { index: true });

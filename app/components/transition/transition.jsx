@@ -1,34 +1,74 @@
-import { AnimatePresence, usePresence } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 /**
  * A lightweight Framer Motion `AnimatePresence` implementation of
  * `react-transition-group` to be used for simple vanilla css transitions
  */
-export const Transition = ({ children, in: show, unmount, initial = true, ...props }) => {
-  const enterTimeout = useRef();
-  const exitTimeout = useRef();
+const defaultTransition = {
+  type: 'tween',
+  ease: 'anticipate',
+  duration: 0.5,
+};
+
+const defaultVariants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+  },
+};
+
+export const Transition = ({
+  children,
+  show = true,
+  showDelay = 0,
+  transition = defaultTransition,
+  variants = defaultVariants,
+  className,
+  ...rest
+}) => {
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (show) {
-      clearTimeout(exitTimeout.current);
-    } else {
-      clearTimeout(enterTimeout.current);
-    }
-  }, [show]);
+    setIsReducedMotion(prefersReducedMotion);
+  }, [prefersReducedMotion]);
+
+  const adjustedTransition = isReducedMotion
+    ? { ...transition, duration: 0 }
+    : transition;
+
+  const adjustedVariants = isReducedMotion
+    ? {
+        initial: { opacity: 1, y: 0 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 1, y: 0 },
+      }
+    : variants;
 
   return (
-    <AnimatePresence>
-      {(show || !unmount) && (
-        <TransitionContent
-          enterTimeout={enterTimeout}
-          exitTimeout={exitTimeout}
-          in={show}
-          initial={initial}
-          {...props}
+    <AnimatePresence mode="wait">
+      {show && (
+        <motion.div
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={adjustedVariants}
+          transition={adjustedTransition}
+          className={className}
+          {...rest}
         >
           {children}
-        </TransitionContent>
+        </motion.div>
       )}
     </AnimatePresence>
   );
@@ -46,6 +86,7 @@ const TransitionContent = ({
   initial,
   nodeRef: defaultNodeRef,
   in: show,
+  isReducedMotion,
 }) => {
   const [status, setStatus] = useState(initial ? 'exited' : 'entered');
   const [isPresent, safeToRemove] = usePresence();
@@ -58,7 +99,7 @@ const TransitionContent = ({
   useEffect(() => {
     if (hasEntered || !show) return;
 
-    const actualTimeout = splitTimeout ? timeout.enter : timeout;
+    const actualTimeout = isReducedMotion ? 0 : (splitTimeout ? timeout.enter : timeout);
 
     clearTimeout(enterTimeout.current);
     clearTimeout(exitTimeout.current);
@@ -67,20 +108,21 @@ const TransitionContent = ({
     setStatus('entering');
     onEnter?.();
 
-    // Force reflow
-    nodeRef.current?.offsetHeight;
+    if (!isReducedMotion) {
+      // Force reflow
+      nodeRef.current?.offsetHeight;
+    }
 
     enterTimeout.current = setTimeout(() => {
       setStatus('entered');
       onEntered?.();
     }, actualTimeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onEnter, onEntered, timeout, status, show]);
+  }, [show, hasEntered, timeout, splitTimeout, onEnter, onEntered, nodeRef, isReducedMotion]);
 
   useEffect(() => {
-    if (isPresent && show) return;
+    if (!hasEntered || show) return;
 
-    const actualTimeout = splitTimeout ? timeout.exit : timeout;
+    const actualTimeout = isReducedMotion ? 0 : (splitTimeout ? timeout.exit : timeout);
 
     clearTimeout(enterTimeout.current);
     clearTimeout(exitTimeout.current);
@@ -88,16 +130,23 @@ const TransitionContent = ({
     setStatus('exiting');
     onExit?.();
 
-    // Force reflow
-    nodeRef.current?.offsetHeight;
-
     exitTimeout.current = setTimeout(() => {
       setStatus('exited');
-      safeToRemove?.();
       onExited?.();
+      safeToRemove?.();
     }, actualTimeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPresent, onExit, safeToRemove, timeout, onExited, show]);
+  }, [show, hasEntered, timeout, splitTimeout, onExit, onExited, safeToRemove, isReducedMotion]);
 
-  return children({ visible, status, nodeRef });
+  return (
+    <div
+      ref={nodeRef}
+      data-status={status}
+      data-visible={visible}
+      style={{
+        transition: isReducedMotion ? 'none' : undefined,
+      }}
+    >
+      {children}
+    </div>
+  );
 };

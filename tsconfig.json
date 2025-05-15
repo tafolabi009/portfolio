@@ -2,7 +2,7 @@
     "compilerOptions": {
       "target": "ESNext",
       "module": "ESNext",
-      "moduleResolution": "Node",
+      "moduleResolution": "Bundler",
       "jsx": "react-jsx",
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
@@ -10,8 +10,13 @@
       "noEmit": false,
       "isolatedModules": true,
       "skipLibCheck": true,
-      "lib": ["DOM", "ESNext"],
-      "outDir": "build"
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "outDir": "build",
+      "types": ["node", "react", "react-dom"],
+      "baseUrl": ".",
+      "paths": {
+        "~/*": ["./app/*"]
+      }
     },
     "include": ["app/**/*", "entry.server.tsx", "vite.config.ts"],
     "exclude": ["node_modules", "build"]

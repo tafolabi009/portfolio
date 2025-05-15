@@ -1,0 +1,192 @@
+.fluidSimulation {
+  padding: var(--space2XL) var(--spaceL);
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.intro {
+  text-align: center;
+  padding: var(--space4XL) 0;
+}
+
+.title {
+  font-size: var(--fontSizeH1);
+  margin-bottom: var(--spaceL);
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+.title[data-visible='true'] {
+  opacity: 1;
+}
+
+.description {
+  margin-bottom: var(--spaceXL);
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  transition-delay: 0.2s;
+}
+
+.description[data-visible='true'] {
+  opacity: 1;
+}
+
+.links {
+  display: flex;
+  gap: var(--spaceL);
+  justify-content: center;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  transition-delay: 0.4s;
+}
+
+.links[data-visible='true'] {
+  opacity: 1;
+}
+
+.githubButton,
+.demoButton {
+  min-width: 200px;
+}
+
+.githubButton:hover,
+.demoButton:hover {
+  transform: translateY(-2px);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spaceL);
+  margin-top: var(--spaceXL);
+}
+
+.stat {
+  text-align: center;
+  padding: var(--spaceL);
+  background: var(--backgroundLight);
+  border-radius: var(--borderRadius);
+  transition: transform 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+}
+
+.featureList,
+.techList,
+.challengeList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spaceL);
+}
+
+.featureList li,
+.techList li,
+.challengeList li {
+  padding: var(--spaceL);
+  background: var(--backgroundLight);
+  border-radius: var(--borderRadius);
+  transition: transform 0.3s ease;
+}
+
+.featureList li:hover,
+.techList li:hover,
+.challengeList li:hover {
+  transform: translateY(-4px);
+}
+
+.demoContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spaceL);
+  margin-top: var(--spaceL);
+}
+
+.demoCode {
+  background: var(--backgroundLight);
+  padding: var(--spaceL);
+  border-radius: var(--borderRadius);
+  overflow-x: auto;
+}
+
+.demoCode pre {
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  font-size: var(--fontSizeS);
+  line-height: 1.5;
+}
+
+.demoStats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spaceL);
+}
+
+.cta {
+  text-align: center;
+  padding: var(--space4XL) 0;
+}
+
+.button {
+  margin-top: var(--spaceL);
+  min-width: 200px;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .fluidSimulation {
+    padding: var(--spaceXL) var(--spaceM);
+  }
+
+  .title {
+    font-size: var(--fontSizeH2);
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .featureList,
+  .techList,
+  .challengeList {
+    grid-template-columns: 1fr;
+  }
+
+  .demoContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .links {
+    flex-direction: column;
+  }
+
+  .githubButton,
+  .demoButton {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .description,
+  .links,
+  .stat,
+  .featureList li,
+  .techList li,
+  .challengeList li,
+  .button {
+    transition: none;
+  }
+} 
