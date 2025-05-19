@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://folabi-portfolio.pages.dev/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://folabi-portfolio.pages.dev/contact/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://folabi-portfolio.pages.dev/articles/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://folabi-portfolio.pages.dev/uses/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://folabi-portfolio.pages.dev/projects/mri-assistant/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://folabi-portfolio.pages.dev/projects/taskr/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://folabi-portfolio.pages.dev/projects/threat-detection/</loc>
+    <loc>https://hamishw.com/projects/volkihar-knight/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hamishw.com/articles/hello-world</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://hamishw.com/articles/modern-styling-in-react</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+</urlset>
