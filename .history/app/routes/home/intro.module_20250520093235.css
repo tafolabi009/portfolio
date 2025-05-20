@@ -269,7 +269,7 @@
 
   &::before {
     content: '';
-    height: 7px;
+    height: 15px;
     width: 2px;
     background: color-mix(in lab, var(--text) 40%, transparent);
     border-radius: 4px;
