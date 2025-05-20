@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">Personal portfolio</h1>
 
-[![Site preview](/public/site-preview.png)](https://folabi-portfolio.pages.dev)
+
 
 A design portfolio to showcase creative work, built with React and optimized with the latest tools. It features buttery smooth animations, a dark mode, full responsiveness, accessibility features, and a clean, minimalist design. The site is statically generated with Remix, deployed on Cloudflare Pages, and employs modern CSS techniques including Grid, CSS modules, custom properties, and fluid / responsive typography. It also comes with media-rich project pages for case studies. View the [live site](https://folabi-portfolio.pages.dev) or check out a live version of the [components storybook](https://storybook.folabi-portfolio.pages.dev).
 
