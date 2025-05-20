@@ -6,7 +6,7 @@ import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-da
 import imageSprLessonBuilderDark from '~/assets/tocin-language.jpg';
 import imageSprLessonBuilderLightLarge from '~/assets/tocin-language.jpgjpg';
 import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
-import imageSprLessonBuilderLight from '~/assets/tocin-language.jpg';
+import imageSprLessonBuilderLight from '~/assets/t.jpg';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';

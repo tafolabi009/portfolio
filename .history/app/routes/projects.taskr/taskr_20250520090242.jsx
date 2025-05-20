@@ -1,12 +1,12 @@
 import backgroundSprLarge from '~/assets/spr-background-large.jpg';
 import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
 import backgroundSpr from '~/assets/spr-background.jpg';
-import imageTaskr from '~/assets/Taskr.jpg';
+import imageTaskr from '~/assets/Taskr.png';
 import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import imageTaskrDark from '~/assets/Taskr.png';
 import imageTaskrLightLarge from '~/assets/Taskr.png';
 import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
-import imageTaskrLight from '~/assets/Taskr.jpg';
+import imageTaskrLight from '~/assets/Taskr.pg';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';

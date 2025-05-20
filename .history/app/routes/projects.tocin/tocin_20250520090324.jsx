@@ -1,12 +1,12 @@
 import backgroundSprLarge from '~/assets/spr-background-large.jpg';
 import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
 import backgroundSpr from '~/assets/spr-background.jpg';
-import imageSprLessonBuilderDarkLarge from '~/assets/tocin-language.jpg';
+import imageSprLessonBuilderDarkLarge from '~/assets/t.jpg';
 import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import imageSprLessonBuilderDark from '~/assets/tocin-language.jpg';
-import imageSprLessonBuilderLightLarge from '~/assets/tocin-language.jpgjpg';
+import imageSprLessonBuilderDark from '~/assets/spr-lesson-builder-dark.jpg';
+import imageSprLessonBuilderLightLarge from '~/assets/spr-lesson-builder-light-large.jpg';
 import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
-import imageSprLessonBuilderLight from '~/assets/tocin-language.jpg';
+import imageSprLessonBuilderLight from '~/assets/spr-lesson-builder-light.jpg';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
