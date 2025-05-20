@@ -3,7 +3,7 @@ import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
 import backgroundSpr from '~/assets/spr-background.jpg';
 import imageTaskr from '~/assets/Taskr.jpg';
 import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import imageTaskrDark from '~/assets/Taskr.jpg';
+import imageTaskrDark from '~/assets/Taskr.png';
 import imageTaskrLightLarge from '~/assets/Taskr.jpg';
 import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
 import imageTaskrLight from '~/assets/Taskr.jpg';
