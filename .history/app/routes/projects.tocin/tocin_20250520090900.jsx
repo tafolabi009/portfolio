@@ -4,7 +4,7 @@ import backgroundSpr from '~/assets/spr-background.jpg';
 import imageSprLessonBuilderDarkLarge from '~/assets/tocin-language.jpg';
 import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import imageSprLessonBuilderDark from '~/assets/tocin-language.jpg';
-import imageSprLessonBuilderLightLarge from '~/assets/tocin-language.jpg';
+import imageSprLessonBuilderLightLarge from '~/assets/tocin-language.jjpg';
 import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
 import imageSprLessonBuilderLight from '~/assets/tocin-language.jpg';
 import { Footer } from '~/components/footer';
