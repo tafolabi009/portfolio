@@ -1,12 +1,9 @@
 import backgroundSprLarge from '~/assets/spr-background-large.jpg';
 import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
 import backgroundSpr from '~/assets/spr-background.jpg';
-import imageSprLessonBuilderDarkLarge from '~/assets/tocin-language.jpg';
-import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import imageSprLessonBuilderDark from '~/assets/tocin-language.jpg';
-import imageSprLessonBuilderLightLarge from '~/assets/tocin-language.jpg';
-import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
-import imageSprLessonBuilderLight from '~/assets/tocin-language.jpg';
+import imageTocinLarge from '~/assets/tocin-language-new-large.jpg';
+import imageTocinPlaceholder from '~/assets/tocin-language-new-placeholder.jpg';
+import imageTocin from '~/assets/tocin-language-new.jpg';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
@@ -27,14 +24,14 @@ import { baseMeta } from '~/utils/meta';
 import { media } from '~/utils/style';
 import styles from './tocin.module.css';
 
-const title = 'Tocin Programming Language';
+const title = 'TosinLang Compiler (Tocin)';
 const description =
-  'LLVM-based Python-like programming language designed for educational purposes and system programming. Features modern syntax with low-level capabilities.';
+  'A statically-typed systems programming language targeting LLVM IR with goroutine-style concurrency, NUMA-aware scheduling, and V8 JavaScript integration. Built from scratch with custom Lexer, Parser, and Semantic Analyzer.';
 const roles = [
   'Language Designer',
-  'Compiler Developer',
-  'Documentation Author',
-  'Community Lead',
+  'Compiler Engineer',
+  'LLVM Backend Developer',
+  'Systems Architect',
 ];
 
 export const meta = () => {
@@ -65,20 +62,12 @@ export const Tocin = () => {
             <ProjectImage
               raised
               key={theme}
-              srcSet={
-                isDark
-                  ? `${imageSprLessonBuilderDark} 1280w, ${imageSprLessonBuilderDarkLarge} 2560w`
-                  : `${imageSprLessonBuilderLight} 1280w, ${imageSprLessonBuilderLightLarge} 2560w`
-              }
+              srcSet={`${imageTocin} 1280w, ${imageTocinLarge} 2560w`}
               width={1280}
               height={800}
-              placeholder={
-                isDark
-                  ? imageSprLessonBuilderDarkPlaceholder
-                  : imageSprLessonBuilderLightPlaceholder
-              }
+              placeholder={imageTocinPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-              alt="Tocin programming language code example in a code editor"
+              alt="Tocin programming language code showcasing work-stealing scheduler and trait-based polymorphism"
             />
           </ProjectSectionContent>
         </ProjectSection>
@@ -86,12 +75,11 @@ export const Tocin = () => {
           <ProjectTextRow>
             <ProjectSectionHeading>The problem</ProjectSectionHeading>
             <ProjectSectionText>
-              Modern programming languages often present a steep learning curve for beginners, while 
-              simultaneously lacking the low-level control required for system programming. Python offers 
-              excellent readability but falls short for performance-critical applications, while C/C++ 
-              provides performance at the cost of safety and readability. Additionally, there's a gap in 
-              languages specifically designed for educational contexts that can scale from teaching basic 
-              programming concepts to advanced system-level programming.
+              Modern systems programming languages force developers to choose between safety and performance,
+              or between high-level abstractions and low-level control. Existing languages lack integrated
+              concurrency models that scale to millions of lightweight tasks while maintaining NUMA-awareness
+              and memory safety. Furthermore, bridging systems programming with JavaScript ecosystems remains
+              cumbersome, requiring extensive FFI boilerplate.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSection>
@@ -100,17 +88,16 @@ export const Tocin = () => {
             <ProjectTextRow>
               <ProjectSectionHeading>The solution</ProjectSectionHeading>
               <ProjectSectionText>
-                Tocin is a programming language designed to bridge this gap by combining Python-like syntax 
-                and readability with LLVM-based compilation for performance. The language provides gradual 
-                typing, memory safety guarantees, and intuitive syntax for beginners, while offering escape 
-                hatches for systems programming when required.
+                Tocin is a statically-typed systems programming language that targets LLVM IR, combining
+                goroutine-style concurrency with NUMA-aware scheduling and V8 JavaScript integration.
+                The language features fiber-based execution with 4KB stacks supporting millions of concurrent
+                goroutines, a work-stealing scheduler with 5-level priority queues, and trait-based polymorphism.
               </ProjectSectionText>
               <ProjectSectionText>
-                Key language features include automatic memory management with optional manual control, a 
-                comprehensive standard library, first-class functions and pattern matching, and excellent 
-                interoperability with C libraries. The compiler produces optimized native code via LLVM, 
-                allowing Tocin programs to achieve near-C performance while maintaining a more approachable 
-                syntax.
+                Key language features include comprehensive null safety, LINQ-style collections, automatic
+                memory management with optional manual control, and seamless JavaScript interop via V8.
+                The compiler produces optimized native code via LLVM 11.0+, achieving near-C performance
+                while maintaining expressive, modern syntax.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -120,36 +107,37 @@ export const Tocin = () => {
             <ProjectSectionContent>
               <ProjectSectionHeading>Technical implementation</ProjectSectionHeading>
               <ProjectSectionText>
-                The Tocin language implementation consists of a custom lexer, parser, semantic analyzer, 
-                and LLVM-based code generator. The compiler is written in C++ with extensive use of modern 
-                language features, and supports cross-platform compilation for Linux, macOS, and Windows.
+                The Tocin compiler is implemented in C++17 with extensive use of modern language features.
+                The architecture consists of a custom lexer, recursive descent parser, semantic analyzer
+                with type inference, and LLVM IR code generator. The runtime includes a sophisticated
+                work-stealing scheduler inspired by Go's goroutine model.
               </ProjectSectionText>
               <ProjectSectionText>
                 Key components of the implementation include:
               </ProjectSectionText>
               <ul>
-                <li>Recursive descent parser with comprehensive error recovery</li>
-                <li>Advanced type inference system with gradual typing</li>
-                <li>Memory-safe runtime with region-based allocation</li>
-                <li>Zero-cost abstractions for high-level constructs</li>
-                <li>Integrated package manager and build system</li>
-                <li>LLVM-based backend producing optimized native code</li>
+                <li>Custom Lexer, Parser, and Semantic Analyzer pipeline</li>
+                <li>Fiber-based execution with 4KB stacks (millions of goroutines)</li>
+                <li>Work-stealing scheduler with 5-level priority queues</li>
+                <li>NUMA-aware memory scheduling for multi-socket systems</li>
+                <li>V8 JavaScript engine integration for seamless interop</li>
+                <li>Trait-based polymorphism and LINQ-style collections</li>
+                <li>LLVM 11.0+ backend producing optimized native code</li>
               </ul>
             </ProjectSectionContent>
             <ProjectSectionContent>
               <ProjectSectionHeading>Outcomes & impact</ProjectSectionHeading>
               <ProjectSectionText>
-                Since its initial release, Tocin has been adopted by several educational institutions 
-                as a teaching language, helping students transition from basic programming concepts to 
-                systems-level understanding. The language has also found use in certain performance-critical 
-                domains, particularly in embedded systems and data processing applications.
+                Building a production compiler from scratch is work typically requiring a senior/staff
+                engineer with 8+ years of experience. The project demonstrates deep expertise in compiler
+                theory, language design, and systems programming — from lexical analysis through LLVM
+                code generation.
               </ProjectSectionText>
               <ProjectSectionText>
-                The open-source Tocin community has grown to include contributors from various backgrounds, 
-                contributing to language features, documentation, and standard library implementations. 
-                Several educational resources have been developed around the language, including interactive 
-                tutorials, comprehensive documentation, and programming challenges specifically designed for 
-                learning Tocin.
+                The Tocin compiler serves as both a practical systems programming tool and a demonstration
+                of advanced computer science concepts. The concurrent runtime has been benchmarked to
+                handle millions of lightweight fibers efficiently, and the NUMA-aware scheduler shows
+                significant performance improvements on multi-socket systems.
               </ProjectSectionText>
             </ProjectSectionContent>
           </ProjectSectionColumns>

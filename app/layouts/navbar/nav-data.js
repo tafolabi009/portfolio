@@ -21,14 +21,9 @@ export const navLinks = [
 
 export const socialLinks = [
   {
-    label: 'Bluesky',
-    url: `https://bsky.app/profile/${config.bluesky}`,
-    icon: 'bluesky',
-  },
-  {
-    label: 'Figma',
-    url: `https://www.figma.com/${config.figma}`,
-    icon: 'figma',
+    label: 'LinkedIn',
+    url: `https://linkedin.com/in/${config.linkedin || config.github}`,
+    icon: 'linkedin',
   },
   {
     label: 'Github',

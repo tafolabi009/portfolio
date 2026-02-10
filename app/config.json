@@ -1,11 +1,13 @@
 {
   "name": "Afolabi Oluwatosin Abioye",
-  "role": "AI/ML Engineer",
-  "disciplines": ["Software Developer", "Cybersecurity Specialist", "Founder"],
+  "role": "Systems Architect",
+  "disciplines": ["ML Researcher", "Founder & CEO", "Compiler Engineer", "Infrastructure & DevOps"],
   "url": "https://folabi-portfolio.pages.dev",
-  "bluesky": "",
-  "figma": "",
   "github": "tafolabi009",
+  "linkedin": "tafolabi009",
+  "website": "genovotech.com",
+  "email": "afolabi@genovotech.com",
+  "location": "Lagos, Nigeria",
   "repo": "https://github.com/tafolabi009/portfolio",
   "ascii": "__  __  __\n\u005C \u005C \u005C \u005C \u005C\u2215\n \u005C \u005C\u2215\u005C \u005C\n  \u005C\u2215  \u005C\u2215\n"
 }

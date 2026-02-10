@@ -21,15 +21,28 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I'm Afolabi, an innovative Software Developer, ML/AI Engineer, and Cybersecurity Specialist with 5+ years of experience 
-      building scalable, secure systems. As the Founder of {' '}
-      <Link href="https://genovotech.com">Genovo Technologies</Link>, I specialize in solving complex problems 
-      in underserved markets using modern ML, cloud-native infrastructure, and systems-level engineering.
+      I'm Afolabi, a Systems Architect and ML Researcher with 8+ years of professional experience 
+      and a decade-long coding trajectory. As the Founder & CEO of {' '}
+      <Link href="https://genovotech.com">Genovo Technologies</Link> (Member, NVIDIA Inception Program), 
+      I specialize in low-level systems engineering, distributed infrastructure, and novel neural 
+      architecture research — including AAAI-accepted work on O(n log n) architectures achieving 
+      3-28× speedup over transformers.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I have a proven track record of delivering production-grade AI systems, developer tools, and
-      technical leadership in high-velocity environments. My technical skills include Python, Rust, TypeScript, 
-      PyTorch, TensorFlow, and various cloud platforms. Feel free to reach out if you're interested in discussing collaboration opportunities.
+      My deep expertise spans compilers (built{' '}
+      <Link href="/projects/tocin">TosinLang from scratch</Link>), OS kernels, 
+      distributed version control ({' '}
+      <Link href="/projects/epoch-vcs">EPOCH VCS</Link>), and mission-critical 
+      broadcast automation. I combine theoretical rigor with production engineering — equally 
+      comfortable proving universal approximation theorems and shipping high-performance Rust 
+      microservices handling 50K+ daily active users. My technical stack includes Python, Rust, 
+      C++, PyTorch, LLVM, AWS, and Kubernetes.
+    </Text>
+    <Text className={styles.description} data-visible={visible} size="l" as="p">
+      I hold a B.Sc. in Computer Science (Honors) from UoPeople and professional certifications 
+      including AWS Cloud Practitioner, Certified Ethical Hacker (CEH), and Google ML Certificate. 
+      I've published 3 research papers with rigorous mathematical proofs, led workshops for 30+ 
+      engineers, and maintain open-source libraries serving 10K+ developers.
     </Text>
   </Fragment>
 );

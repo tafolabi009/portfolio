@@ -1,15 +1,21 @@
-import gamestackTexture2Large from '~/assets/gamestack-list-large.jpg';
-import gamestackTexture2Placeholder from '~/assets/gamestack-list-placeholder.jpg';
-import gamestackTexture2 from '~/assets/gamestack-list.jpg';
-import gamestackTextureLarge from '~/assets/gamestack-login-large.jpg';
-import gamestackTexturePlaceholder from '~/assets/gamestack-login-placeholder.jpg';
-import gamestackTexture from '~/assets/gamestack-login.jpg';
-import sliceTextureLarge from '~/assets/tocin-language.jpg';
-import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
-import sliceTexture from '~/assets/tocin-language.jpg';
-import sprTextureLarge from '~/assets/Taskr.jpg';
-import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import sprTexture from '~/assets/Taskr.jpg';
+import taskrTextureLarge from '~/assets/taskr-new-large.jpg';
+import taskrTexturePlaceholder from '~/assets/taskr-new-placeholder.jpg';
+import taskrTexture from '~/assets/taskr-new.jpg';
+import tocinTextureLarge from '~/assets/tocin-language-new-large.jpg';
+import tocinTexturePlaceholder from '~/assets/tocin-language-new-placeholder.jpg';
+import tocinTexture from '~/assets/tocin-language-new.jpg';
+import synthosTextureLarge from '~/assets/synthos-large.jpg';
+import synthosTexturePlaceholder from '~/assets/synthos-placeholder.jpg';
+import synthosTexture from '~/assets/synthos.jpg';
+import epochTextureLarge from '~/assets/epoch-vcs-large.jpg';
+import epochTexturePlaceholder from '~/assets/epoch-vcs-placeholder.jpg';
+import epochTexture from '~/assets/epoch-vcs.jpg';
+import threatTextureLarge from '~/assets/threat-detection-new-large.jpg';
+import threatTexturePlaceholder from '~/assets/threat-detection-new-placeholder.jpg';
+import threatTexture from '~/assets/threat-detection-new.jpg';
+import navierflowTextureLarge from '~/assets/navierflow-large.jpg';
+import navierflowTexturePlaceholder from '~/assets/navierflow-placeholder.jpg';
+import navierflowTexture from '~/assets/navierflow.jpg';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -41,8 +47,8 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'AI/ML Engineer • Software Developer • Cybersecurity Specialist',
-    description: `Portfolio of ${config.name} — an AI/ML Engineer, Software Developer, and Cybersecurity Specialist with 5+ years of experience building scalable, secure systems.`,
+    title: 'Systems Architect • ML Researcher • Founder',
+    description: `Portfolio of ${config.name} — Systems Architect and ML Researcher with 8+ years of experience. Founder & CEO of Genovo Technologies (NVIDIA Inception). Author of AAAI-accepted research on O(n log n) neural architectures.`,
   });
 };
 
@@ -54,10 +60,12 @@ export const Home = () => {
   const projectTwo = useRef();
   const projectThree = useRef();
   const projectFour = useRef();
+  const projectFive = useRef();
+  const projectSix = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, projectSix, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -104,17 +112,17 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Taskr - Flutter Marketplace Platform"
-        description="A full-featured marketplace platform built with Flutter and Node.js, integrated with Firebase for real-time data and Stripe/Paystack for payments. Designed for service providers and customers in NG/US/UK markets."
+        title="SynthOS - Synthetic Data Validation Platform"
+        description="Architected the first synthetic data validation platform with model collapse detection at Genovo Technologies (NVIDIA Inception). Multi-scale cascade validation using 15+ proxy models predicting collapse with 90%+ accuracy."
         buttonText="View project"
-        buttonLink="/projects/taskr"
+        buttonLink="/projects/synthos"
         model={{
           type: 'laptop',
-          alt: 'Taskr marketplace application',
+          alt: 'SynthOS validation dashboard',
           textures: [
             {
-              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
-              placeholder: sprTexturePlaceholder,
+              srcSet: `${synthosTexture} 1280w, ${synthosTextureLarge} 2560w`,
+              placeholder: synthosTexturePlaceholder,
             },
           ],
         }}
@@ -125,21 +133,17 @@ export const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Threat Detection AI"
-        description="An artificial neural network (ANN) model for live threat classification in cybersecurity applications, achieving 95% accuracy in identifying potential security threats."
+        title="TosinLang Compiler (Tocin)"
+        description="A statically-typed systems programming language targeting LLVM IR with goroutine-style concurrency, NUMA-aware scheduling, and V8 JavaScript integration. Built from scratch with custom Lexer, Parser, and Semantic Analyzer."
         buttonText="View project"
-        buttonLink="/projects/threat-detection"
+        buttonLink="/projects/tocin"
         model={{
-          type: 'phone',
-          alt: 'Threat detection application',
+          type: 'laptop',
+          alt: 'Tocin programming language compiler',
           textures: [
             {
-              srcSet: `${gamestackTexture} 375w, ${gamestackTextureLarge} 750w`,
-              placeholder: gamestackTexturePlaceholder,
-            },
-            {
-              srcSet: `${gamestackTexture2} 375w, ${gamestackTexture2Large} 750w`,
-              placeholder: gamestackTexture2Placeholder,
+              srcSet: `${tocinTexture} 1280w, ${tocinTextureLarge} 2560w`,
+              placeholder: tocinTexturePlaceholder,
             },
           ],
         }}
@@ -149,17 +153,17 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Tocin Programming Language"
-        description="LLVM-based Python-like programming language designed for educational purposes and system programming. Features modern syntax with low-level capabilities."
+        title="EPOCH VCS - Distributed Version Control"
+        description="A distributed Version Control System built in Rust using Merkle DAGs for history tracking, optimized for large binary assets with delta compression and cryptographic verification."
         buttonText="View project"
-        buttonLink="/projects/tocin"
+        buttonLink="/projects/epoch-vcs"
         model={{
           type: 'laptop',
-          alt: 'Tocin programming language code example',
+          alt: 'EPOCH VCS branching visualization',
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
-              placeholder: sliceTexturePlaceholder,
+              srcSet: `${epochTexture} 1280w, ${epochTextureLarge} 2560w`,
+              placeholder: epochTexturePlaceholder,
             },
           ],
         }}
@@ -170,17 +174,58 @@ export const Home = () => {
         sectionRef={projectFour}
         visible={visibleSections.includes(projectFour.current)}
         index={4}
-        title="ML-based MRI Assistant"
-        description="Machine learning solution for rural diagnostics, enhancing healthcare access in underserved regions by providing automated analysis of MRI scans."
+        title="Taskr - Flutter Marketplace Platform"
+        description="Architected Flutter + Node.js platform serving 5K+ concurrent users across Nigeria, US, UK with Stripe/Paystack integration and 99.9% uptime."
         buttonText="View project"
-        buttonLink="/projects/mri-assistant"
+        buttonLink="/projects/taskr"
         model={{
           type: 'laptop',
-          alt: 'MRI Assistant application interface',
+          alt: 'Taskr marketplace application',
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
-              placeholder: sliceTexturePlaceholder,
+              srcSet: `${taskrTexture} 1280w, ${taskrTextureLarge} 2560w`,
+              placeholder: taskrTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-5"
+        sectionRef={projectFive}
+        visible={visibleSections.includes(projectFive.current)}
+        index={5}
+        title="Threat Detection AI System"
+        description="AI-powered threat classification system achieving 94% accuracy, processing 10TB+ of security data daily with sub-500ms detection latency and 70% false positive reduction."
+        buttonText="View project"
+        buttonLink="/projects/threat-detection"
+        model={{
+          type: 'laptop',
+          alt: 'Threat detection dashboard',
+          textures: [
+            {
+              srcSet: `${threatTexture} 1280w, ${threatTextureLarge} 2560w`,
+              placeholder: threatTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-6"
+        alternate
+        sectionRef={projectSix}
+        visible={visibleSections.includes(projectSix.current)}
+        index={6}
+        title="NavierFlow CFD Engine"
+        description="Professional-grade Computational Fluid Dynamics simulation engine supporting Navier-Stokes and Lattice Boltzmann solvers with GPU-accelerated real-time visualization via Taichi."
+        buttonText="View project"
+        buttonLink="/projects/navierflow"
+        model={{
+          type: 'laptop',
+          alt: 'NavierFlow CFD simulation',
+          textures: [
+            {
+              srcSet: `${navierflowTexture} 1280w, ${navierflowTextureLarge} 2560w`,
+              placeholder: navierflowTexturePlaceholder,
             },
           ],
         }}

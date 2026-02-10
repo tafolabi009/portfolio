@@ -1,12 +1,9 @@
 import backgroundSprLarge from '~/assets/spr-background-large.jpg';
 import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
 import backgroundSpr from '~/assets/spr-background.jpg';
-import imageSprLessonBuilderDarkLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
-import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import imageSprLessonBuilderDark from '~/assets/spr-lesson-builder-dark.jpg';
-import imageSprLessonBuilderLightLarge from '~/assets/spr-lesson-builder-light-large.jpg';
-import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
-import imageSprLessonBuilderLight from '~/assets/spr-lesson-builder-light.jpg';
+import imageMriLarge from '~/assets/mri-assistant-new-large.jpg';
+import imageMriPlaceholder from '~/assets/mri-assistant-new-placeholder.jpg';
+import imageMri from '~/assets/mri-assistant-new.jpg';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
@@ -65,20 +62,12 @@ export const MRIAssistant = () => {
             <ProjectImage
               raised
               key={theme}
-              srcSet={
-                isDark
-                  ? `${imageSprLessonBuilderDark} 1280w, ${imageSprLessonBuilderDarkLarge} 2560w`
-                  : `${imageSprLessonBuilderLight} 1280w, ${imageSprLessonBuilderLightLarge} 2560w`
-              }
+              srcSet={`${imageMri} 1280w, ${imageMriLarge} 2560w`}
               width={1280}
               height={800}
-              placeholder={
-                isDark
-                  ? imageSprLessonBuilderDarkPlaceholder
-                  : imageSprLessonBuilderLightPlaceholder
-              }
+              placeholder={imageMriPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-              alt="MRI Assistant application interface showing brain scan analysis"
+              alt="MRI Assistant application interface showing brain scan analysis and diagnostic report"
             />
           </ProjectSectionContent>
         </ProjectSection>

@@ -22,7 +22,7 @@ export const meta = () => {
   return baseMeta({
     title: 'Contact | Afolabi Oluwatosin Abioye',
     description:
-      'Get in touch with Afolabi Oluwatosin Abioye for AI/ML, software development, or cybersecurity consulting opportunities.',
+      'Get in touch with Afolabi Oluwatosin Abioye for systems architecture, ML research, compiler engineering, or startup collaboration.',
   });
 };
 

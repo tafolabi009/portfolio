@@ -1,12 +1,9 @@
 import backgroundSprLarge from '~/assets/spr-background-large.jpg';
 import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
 import backgroundSpr from '~/assets/spr-background.jpg';
-import imageTaskr from '~/assets/Taskr.jpg';
-import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import imageTaskrDark from '~/assets/Taskr.jpg';
-import imageTaskrLightLarge from '~/assets/Taskr.jpg';
-import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
-import imageTaskrLight from '~/assets/Taskr.jpg';
+import imageTaskrLarge from '~/assets/taskr-new-large.jpg';
+import imageTaskrPlaceholder from '~/assets/taskr-new-placeholder.jpg';
+import imageTaskr from '~/assets/taskr-new.jpg';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
@@ -29,12 +26,12 @@ import styles from './taskr.module.css';
 
 const title = 'Taskr - Flutter Marketplace Platform';
 const description =
-  'A full-featured marketplace platform built with Flutter and Node.js, integrated with Firebase for real-time data and Stripe/Paystack for payments. Designed for service providers and customers in NG/US/UK markets.';
+  'Architected Flutter + Node.js platform serving 5K+ concurrent users across Nigeria, US, UK with Stripe/Paystack integration and 99.9% uptime.';
 const roles = [
-  'Founder',
-  'Lead Developer',
-  'UI/UX Designer',
-  'Backend Architecture',
+  'Founder & Lead Developer',
+  'Full Stack Architecture',
+  'Payment Integration',
+  'Cross-Platform Mobile',
 ];
 
 export const meta = () => {
@@ -65,20 +62,12 @@ export const Taskr = () => {
             <ProjectImage
               raised
               key={theme}
-              srcSet={
-                isDark
-                  ? `${imageTaskrDark} 720w, ${imageTaskrDark} 1000w`
-                  : `${imageTaskrLight} 720w, ${imageTaskrLightLarge} 1000w`
-              }
-              width={800}
-              height={600}
-              placeholder={
-                isDark
-                  ? imageSprLessonBuilderDarkPlaceholder
-                  : imageSprLessonBuilderLightPlaceholder
-              }
+              srcSet={`${imageTaskr} 1280w, ${imageTaskrLarge} 2560w`}
+              width={1280}
+              height={800}
+              placeholder={imageTaskrPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-              alt="Taskr marketplace application interface showing service listings"
+              alt="Taskr marketplace dashboard showing service listings and analytics"
             />
           </ProjectSectionContent>
         </ProjectSection>

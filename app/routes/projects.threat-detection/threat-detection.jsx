@@ -1,12 +1,9 @@
 import backgroundSprLarge from '~/assets/spr-background-large.jpg';
 import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
 import backgroundSpr from '~/assets/spr-background.jpg';
-import imageSprLessonBuilderDarkLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
-import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import imageSprLessonBuilderDark from '~/assets/spr-lesson-builder-dark.jpg';
-import imageSprLessonBuilderLightLarge from '~/assets/spr-lesson-builder-light-large.jpg';
-import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
-import imageSprLessonBuilderLight from '~/assets/spr-lesson-builder-light.jpg';
+import imageThreatLarge from '~/assets/threat-detection-new-large.jpg';
+import imageThreatPlaceholder from '~/assets/threat-detection-new-placeholder.jpg';
+import imageThreat from '~/assets/threat-detection-new.jpg';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
@@ -27,13 +24,13 @@ import { baseMeta } from '~/utils/meta';
 import { media } from '~/utils/style';
 import styles from './threat-detection.module.css';
 
-const title = 'Threat Detection AI';
+const title = 'Threat Detection AI System';
 const description =
-  'An artificial neural network (ANN) model for live threat classification in cybersecurity applications, achieving 95% accuracy in identifying potential security threats.';
+  'AI-powered threat classification system achieving 94% accuracy, processing 10TB+ of security data daily with sub-500ms detection latency and 70% false positive reduction.';
 const roles = [
-  'Machine Learning Engineer',
-  'Cybersecurity Specialist',
-  'Software Developer',
+  'ML Engineer',
+  'Security Architect',
+  'Systems Engineer',
   'Data Scientist',
 ];
 
@@ -65,20 +62,12 @@ export const ThreatDetection = () => {
             <ProjectImage
               raised
               key={theme}
-              srcSet={
-                isDark
-                  ? `${imageSprLessonBuilderDark} 1280w, ${imageSprLessonBuilderDarkLarge} 2560w`
-                  : `${imageSprLessonBuilderLight} 1280w, ${imageSprLessonBuilderLightLarge} 2560w`
-              }
+              srcSet={`${imageThreat} 1280w, ${imageThreatLarge} 2560w`}
               width={1280}
               height={800}
-              placeholder={
-                isDark
-                  ? imageSprLessonBuilderDarkPlaceholder
-                  : imageSprLessonBuilderLightPlaceholder
-              }
+              placeholder={imageThreatPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-              alt="Threat Detection AI dashboard showing real-time threat analysis"
+              alt="Threat Detection AI dashboard showing real-time threat analysis and classification"
             />
           </ProjectSectionContent>
         </ProjectSection>
