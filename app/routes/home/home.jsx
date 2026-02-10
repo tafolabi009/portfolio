@@ -7,15 +7,15 @@ import tocinTexture from '~/assets/tocin-language-new.jpg';
 import synthosTextureLarge from '~/assets/synthos-large.jpg';
 import synthosTexturePlaceholder from '~/assets/synthos-placeholder.jpg';
 import synthosTexture from '~/assets/synthos.jpg';
+import resonanceTextureLarge from '~/assets/resonance-nn-large.jpg';
+import resonanceTexturePlaceholder from '~/assets/resonance-nn-placeholder.jpg';
+import resonanceTexture from '~/assets/resonance-nn.jpg';
+import rtosTextureLarge from '~/assets/tosin-rtos-large.jpg';
+import rtosTexturePlaceholder from '~/assets/tosin-rtos-placeholder.jpg';
+import rtosTexture from '~/assets/tosin-rtos.jpg';
 import epochTextureLarge from '~/assets/epoch-vcs-large.jpg';
 import epochTexturePlaceholder from '~/assets/epoch-vcs-placeholder.jpg';
 import epochTexture from '~/assets/epoch-vcs.jpg';
-import threatTextureLarge from '~/assets/threat-detection-new-large.jpg';
-import threatTexturePlaceholder from '~/assets/threat-detection-new-placeholder.jpg';
-import threatTexture from '~/assets/threat-detection-new.jpg';
-import navierflowTextureLarge from '~/assets/navierflow-large.jpg';
-import navierflowTexturePlaceholder from '~/assets/navierflow-placeholder.jpg';
-import navierflowTexture from '~/assets/navierflow.jpg';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -47,8 +47,8 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'Systems Architect • ML Researcher • Founder',
-    description: `Portfolio of ${config.name} — Systems Architect and ML Researcher with 8+ years of experience. Founder & CEO of Genovo Technologies (NVIDIA Inception). Author of AAAI-accepted research on O(n log n) neural architectures.`,
+    title: 'Founder & CEO, Genovo Technologies | AI Researcher & Systems Engineer',
+    description: `Portfolio of ${config.name} — Founder & CEO at Genovo Technologies (NVIDIA Inception). AI researcher, systems engineer, and HPC specialist. 6 published research papers. Builder of compilers, operating systems, and novel ML architectures.`,
   });
 };
 

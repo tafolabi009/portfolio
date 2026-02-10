@@ -18,31 +18,32 @@ import styles from './profile.module.css';
 const ProfileText = ({ visible, titleId }) => (
   <Fragment>
     <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
-      <DecoderText text="Hi there" start={visible} delay={500} />
+      <DecoderText text="Hi, I'm Folabi" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I'm Afolabi, a Systems Architect and ML Researcher with 8+ years of professional experience 
-      and a decade-long coding trajectory. As the Founder & CEO of {' '}
-      <Link href="https://genovotech.com">Genovo Technologies</Link> (Member, NVIDIA Inception Program), 
-      I specialize in low-level systems engineering, distributed infrastructure, and novel neural 
-      architecture research — including AAAI-accepted work on O(n log n) architectures achieving 
-      3-28× speedup over transformers.
+      Founder & CEO at{' '}
+      <Link href="https://genovotech.com">Genovo Technologies</Link> (NVIDIA Inception) —
+      bridging the gap between low-level systems (C++, Assembly) and advanced AI
+      architectures. I build technology that is both technically robust and human-centric,
+      with a background in Computer Science and ongoing studies in Psychology.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      My deep expertise spans compilers (built{' '}
-      <Link href="/projects/tocin">TosinLang from scratch</Link>), OS kernels, 
-      distributed version control ({' '}
-      <Link href="/projects/epoch-vcs">EPOCH VCS</Link>), and mission-critical 
-      broadcast automation. I combine theoretical rigor with production engineering — equally 
-      comfortable proving universal approximation theorems and shipping high-performance Rust 
-      microservices handling 50K+ daily active users. My technical stack includes Python, Rust, 
-      C++, PyTorch, LLVM, AWS, and Kubernetes.
+      I specialize in compiler design ({' '}
+      <Link href="/projects/tocin">TosinLang</Link>,{' '}
+      <Link href="/projects/novalang">NovaLang</Link>), operating systems ({' '}
+      <Link href="/projects/tosin-rtos">tosin_rtos</Link>), distributed version
+      control (<Link href="/projects/epoch-vcs">EPOCH VCS</Link>), and novel ML
+      architectures — including AAAI 2026 Workshop–accepted research on O(n log n)
+      spectral sequence modeling achieving 3–28× speedups over transformers. I've authored
+      6 research papers with rigorous mathematical proofs.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I hold a B.Sc. in Computer Science (Honors) from UoPeople and professional certifications 
-      including AWS Cloud Practitioner, Certified Ethical Hacker (CEH), and Google ML Certificate. 
-      I've published 3 research papers with rigorous mathematical proofs, led workshops for 30+ 
-      engineers, and maintain open-source libraries serving 10K+ developers.
+      I hold a B.Sc. in Computer Science from the University of the People and a B.Sc. in
+      Psychology from Redeemer's University. Certifications include AWS Cloud Practitioner,
+      Certified Ethical Hacker (CEH), Google ML Certificate, and Software Engineering. I
+      lead an 11-person team at Genovo, directing R&D across{' '}
+      <Link href="/projects/synthos">SynthOS</Link>, AI agents, and next-generation
+      model architectures.
     </Text>
   </Fragment>
 );

@@ -20,9 +20,9 @@ import styles from './contact.module.css';
 
 export const meta = () => {
   return baseMeta({
-    title: 'Contact | Afolabi Oluwatosin Abioye',
+    title: 'Contact | Folabi — Genovo Technologies',
     description:
-      'Get in touch with Afolabi Oluwatosin Abioye for systems architecture, ML research, compiler engineering, or startup collaboration.',
+      'Get in touch with Folabi for AI infrastructure, systems engineering, compiler design, HPC consulting, or startup collaboration.',
   });
 };
 
