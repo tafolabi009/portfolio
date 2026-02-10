@@ -136,8 +136,9 @@ export const SynthOS = () => {
                 training runs in hours.
               </ProjectSectionText>
               <ProjectSectionText>
-                As Founder & CEO, I lead a 5-person technical team across ML engineering, backend 
-                infrastructure, and DevOps. The company has secured pilot programs with enterprise 
+                As Founder & CEO, I lead an 11-person team across ML engineering, backend 
+                infrastructure, and DevOps — with a CTO/Co-founder handling Go, Rust, Python, 
+                and React-based engineering. The company has secured pilot programs with enterprise 
                 AI labs, with a performance-based pricing model that directly demonstrates value 
                 to customers. Built as a Delaware C-Corp with international operations.
               </ProjectSectionText>
@@ -150,11 +151,11 @@ export const SynthOS = () => {
               <ProjectSectionHeading>Technology & roadmap</ProjectSectionHeading>
               <ProjectSectionText>
                 The SynthOS technical stack includes Python, PyTorch, Rust, AWS (SageMaker, EC2, S3), 
-                Docker, and Kubernetes. Our roadmap includes expanding proxy model coverage to support 
-                multimodal data (text, image, code), implementing continuous monitoring for production 
-                synthetic data pipelines, and developing automated remediation suggestions when quality 
-                issues are detected. We're also building integrations with major ML platforms to enable 
-                seamless validation workflows.
+                Docker, and Kubernetes. SynthOS feeds into Genovo's broader SCOS vision — a Synthetic 
+                Cognition Operating System providing a unified, predictive, self-optimizing intelligent 
+                network across manufacturing, energy grids, smart cities, healthcare, and supply chains. 
+                Our immediate roadmap includes multimodal data support, continuous monitoring for 
+                production pipelines, and integrations with major ML platforms.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>

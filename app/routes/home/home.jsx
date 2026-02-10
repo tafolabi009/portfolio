@@ -112,8 +112,8 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="SynthOS - Synthetic Data Validation Platform"
-        description="Architected the first synthetic data validation platform with model collapse detection at Genovo Technologies (NVIDIA Inception). Multi-scale cascade validation using 15+ proxy models predicting collapse with 90%+ accuracy."
+        title="SynthOS — AI Data Validation Platform"
+        description="The first synthetic data validation platform with model collapse detection. Multi-scale cascade validation using 15+ proxy models, predicting collapse with 90%+ accuracy before $100M training runs. Built at Genovo Technologies (NVIDIA Inception)."
         buttonText="View project"
         buttonLink="/projects/synthos"
         model={{
@@ -133,17 +133,17 @@ export const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="TosinLang Compiler (Tocin)"
-        description="A statically-typed systems programming language targeting LLVM IR with goroutine-style concurrency, NUMA-aware scheduling, and V8 JavaScript integration. Built from scratch with custom Lexer, Parser, and Semantic Analyzer."
+        title="Resonance Neural Networks"
+        description="Novel ML architecture replacing attention with FFT-based spectral processing. O(n log n) complexity, 3–28× speedup over transformers, 83% fewer parameters, 260K-token context. Accepted to AAAI 2026 Workshop."
         buttonText="View project"
-        buttonLink="/projects/tocin"
+        buttonLink="/projects/resonance-nn"
         model={{
           type: 'laptop',
-          alt: 'Tocin programming language compiler',
+          alt: 'Resonance Neural Network architecture',
           textures: [
             {
-              srcSet: `${tocinTexture} 1280w, ${tocinTextureLarge} 2560w`,
-              placeholder: tocinTexturePlaceholder,
+              srcSet: `${resonanceTexture} 1280w, ${resonanceTextureLarge} 2560w`,
+              placeholder: resonanceTexturePlaceholder,
             },
           ],
         }}
@@ -153,8 +153,49 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="EPOCH VCS - Distributed Version Control"
-        description="A distributed Version Control System built in Rust using Merkle DAGs for history tracking, optimized for large binary assets with delta compression and cryptographic verification."
+        title="TosinLang — Systems Programming Language"
+        description="A statically-typed language targeting LLVM IR with goroutine-style concurrency, NUMA-aware scheduling, and V8 integration. Built from scratch — Lexer, Parser, Semantic Analyzer, and code generator."
+        buttonText="View project"
+        buttonLink="/projects/tocin"
+        model={{
+          type: 'laptop',
+          alt: 'TosinLang compiler',
+          textures: [
+            {
+              srcSet: `${tocinTexture} 1280w, ${tocinTextureLarge} 2560w`,
+              placeholder: tocinTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-4"
+        alternate
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        title="tosin_rtos — Real-Time Operating System"
+        description="A from-scratch x86 RTOS: custom 512-byte bootloader, preemptive scheduler with 16 priority levels, ~100-cycle context switches, best-fit heap allocator, IPC primitives, and interactive shell — all in ~20KB."
+        buttonText="View project"
+        buttonLink="/projects/tosin-rtos"
+        model={{
+          type: 'laptop',
+          alt: 'tosin_rtos kernel shell',
+          textures: [
+            {
+              srcSet: `${rtosTexture} 1280w, ${rtosTextureLarge} 2560w`,
+              placeholder: rtosTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-5"
+        sectionRef={projectFive}
+        visible={visibleSections.includes(projectFive.current)}
+        index={5}
+        title="EPOCH VCS — Distributed Version Control"
+        description="Distributed VCS built in Rust using Merkle DAGs for history tracking, delta compression for large binary assets, and cryptographic verification for tamper-proof repositories."
         buttonText="View project"
         buttonLink="/projects/epoch-vcs"
         model={{
@@ -169,13 +210,13 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-4"
+        id="project-6"
         alternate
-        sectionRef={projectFour}
-        visible={visibleSections.includes(projectFour.current)}
-        index={4}
-        title="Taskr - Flutter Marketplace Platform"
-        description="Architected Flutter + Node.js platform serving 5K+ concurrent users across Nigeria, US, UK with Stripe/Paystack integration and 99.9% uptime."
+        sectionRef={projectSix}
+        visible={visibleSections.includes(projectSix.current)}
+        index={6}
+        title="Taskr — Global Talent Marketplace"
+        description="Flutter + Node.js marketplace connecting African professionals to international clients. AI-powered matching, cross-border payments (Stripe + Paystack), serving 5K+ concurrent users across Nigeria, US, UK."
         buttonText="View project"
         buttonLink="/projects/taskr"
         model={{
@@ -185,47 +226,6 @@ export const Home = () => {
             {
               srcSet: `${taskrTexture} 1280w, ${taskrTextureLarge} 2560w`,
               placeholder: taskrTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-5"
-        sectionRef={projectFive}
-        visible={visibleSections.includes(projectFive.current)}
-        index={5}
-        title="Threat Detection AI System"
-        description="AI-powered threat classification system achieving 94% accuracy, processing 10TB+ of security data daily with sub-500ms detection latency and 70% false positive reduction."
-        buttonText="View project"
-        buttonLink="/projects/threat-detection"
-        model={{
-          type: 'laptop',
-          alt: 'Threat detection dashboard',
-          textures: [
-            {
-              srcSet: `${threatTexture} 1280w, ${threatTextureLarge} 2560w`,
-              placeholder: threatTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-6"
-        alternate
-        sectionRef={projectSix}
-        visible={visibleSections.includes(projectSix.current)}
-        index={6}
-        title="NavierFlow CFD Engine"
-        description="Professional-grade Computational Fluid Dynamics simulation engine supporting Navier-Stokes and Lattice Boltzmann solvers with GPU-accelerated real-time visualization via Taichi."
-        buttonText="View project"
-        buttonLink="/projects/navierflow"
-        model={{
-          type: 'laptop',
-          alt: 'NavierFlow CFD simulation',
-          textures: [
-            {
-              srcSet: `${navierflowTexture} 1280w, ${navierflowTextureLarge} 2560w`,
-              placeholder: navierflowTexturePlaceholder,
             },
           ],
         }}

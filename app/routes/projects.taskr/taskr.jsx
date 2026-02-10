@@ -24,14 +24,14 @@ import { baseMeta } from '~/utils/meta';
 import { media } from '~/utils/style';
 import styles from './taskr.module.css';
 
-const title = 'Taskr - Flutter Marketplace Platform';
+const title = 'Taskr — Global Talent Marketplace';
 const description =
-  'Architected Flutter + Node.js platform serving 5K+ concurrent users across Nigeria, US, UK with Stripe/Paystack integration and 99.9% uptime.';
+  'Global talent marketplace connecting African professionals to international clients. Flutter + Node.js + Firebase stack with AI-powered matching, cross-border payments (Stripe + Paystack), and 5K+ concurrent users across Nigeria, US, UK.';
 const roles = [
   'Founder & Lead Developer',
   'Full Stack Architecture',
-  'Payment Integration',
-  'Cross-Platform Mobile',
+  'AI Matching Engine',
+  'Cross-Border Payments',
 ];
 
 export const meta = () => {
