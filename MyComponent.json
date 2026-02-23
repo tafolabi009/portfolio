@@ -1,0 +1,18 @@
+export const USER = {
+  name: "Oluwatosin Abioye Afolabi",
+  heroLine: "AI & Systems Engineer building high-performance software and intelligent systems.",
+  role: "Founder & CEO, Genovo Technologies",
+  disciplines: ["AI Researcher", "Systems Engineer", "Compiler Designer", "HPC Specialist"],
+  url: "https://folabi-portfolio.pages.dev",
+  github: "tafolabi009",
+  linkedin: "tafolabi009",
+  website: "genovotech.com",
+  email: "afolabi@genovotech.com",
+  location: "Lagos, Nigeria",
+  repo: "https://github.com/tafolabi009/portfolio",
+  asciiArt: `
+    __  __
+    \\ \\ \\ \\ \
+    \\ \\ / \\ \\ \\
+  `
+};
