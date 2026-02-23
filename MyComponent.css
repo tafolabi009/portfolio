@@ -1,0 +1,16 @@
+.hero {
+  max-width: 90%;           
+  margin: 0 auto;
+  padding: clamp(1rem, 5vw, 3rem); 
+  word-wrap: break-word;     
+  overflow-x: hidden;        
+}
+
+.hero-line {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.disciplines {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  white-space: normal;       
+}
