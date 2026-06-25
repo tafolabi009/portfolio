@@ -1,0 +1,206 @@
+% =====================================================================
+%  Afolabi Oluwatosin Abioye — Resume (source)
+%  Compile:  pdflatex resume.tex   (run twice for links/refs)
+%  No exotic fonts/packages — builds with a standard TeX Live install.
+%
+%  This source reflects the "defensible framing" agreed for the
+%  portfolio + resume to tell one consistent story:
+%   - AAAI-26 *Workshop* author (not "published at AAAI")
+%   - 17-person team (full-time + contract)  [matches genovotech.dev / site]
+%   - single-digit-ms p99 (sub-ms service compute)  [physically honest]
+%   - from-first-principles builds vs production systems made explicit
+%   - 3 publicly verifiable papers (OpenReview/arXiv)
+% =====================================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1.4cm]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+% ---- palette (cyan accent, ~ site oklch(84% .19 202)) ----
+\definecolor{accent}{HTML}{0E7C8B}
+\definecolor{ink}{HTML}{1A1A1A}
+\definecolor{muted}{HTML}{555555}
+\color{ink}
+
+\hypersetup{
+  colorlinks=true, urlcolor=accent, linkcolor=accent,
+  pdftitle={Afolabi Oluwatosin Abioye -- Resume},
+  pdfauthor={Afolabi Oluwatosin Abioye}
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\baselinestretch}{1.02}
+
+% ---- section heading: small-caps accent label + rule ----
+\titleformat{\section}
+  {\large\bfseries\color{accent}\scshape}
+  {}{0pt}{}[\vspace{1pt}{\color{accent!40}\titlerule[1pt]}]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+% ---- helpers ----
+\newcommand{\sep}{\ $\cdot$\ }
+\newcommand{\role}[4]{%
+  \vspace{2pt}%
+  {\bfseries #1}\hfill{\color{muted}#3}\\[1pt]%
+  {\color{accent}#2}\hfill{\color{muted}\itshape #4}\par%
+  \vspace{2pt}%
+}
+\newcommand{\project}[2]{\item {\bfseries #1} {\color{muted}\small(#2)}}
+\setlist[itemize]{leftmargin=1.1em, itemsep=1pt, topsep=2pt, parsep=0pt}
+
+% =====================================================================
+\begin{document}
+
+% ----------------------------- HEADER --------------------------------
+\begin{center}
+  {\Huge\bfseries Afolabi Oluwatosin Abioye}\\[3pt]
+  {\color{accent}\large Founder \& CEO, Genovo Technologies\sep AAAI-26 Workshop Author\sep NVIDIA Inception}\\[4pt]
+  {\small
+    Lagos, Nigeria\sep +234-802-970-9341\sep
+    \href{mailto:afolabi@genovotech.com}{afolabi@genovotech.com}\\
+    \href{https://github.com/tafolabi009}{github.com/tafolabi009}\sep
+    \href{https://genovotech.com}{genovotech.com}\sep
+    \href{https://folabi.me}{folabi.me}
+  }
+\end{center}
+\vspace{2pt}
+
+% ----------------------------- PROFILE -------------------------------
+\section{Profile}
+Systems Architect and ML Researcher with 8+ years spanning broadcast automation, fintech
+infrastructure, and frontier AI. Founder \& CEO of Genovo Technologies (NVIDIA Inception
+Program, Delaware C-Corp). Workshop paper accepted at AAAI-26 (AIDD) on O(T) neural
+architectures. Built --- from first principles --- an OS kernel, LLVM compiler, distributed VCS,
+language runtime, and high-performance code editor; ships production inference and API
+infrastructure on an 8$\times$ H100 cluster. Combines mathematical rigor with production
+engineering --- every paper is backed by a working implementation.
+
+% --------------------------- EXPERIENCE ------------------------------
+\section{Professional Experience}
+
+\role{Founder \& CEO}{Genovo Technologies (NVIDIA Inception) --- Delaware C-Corp}{Jan 2025 -- Present}{Lagos, Nigeria / Remote}
+\begin{itemize}
+  \item \textbf{SynthOS:} architected the first synthetic-data validation platform with model-collapse
+        detection --- 90\%+ prediction accuracy before \$100M training runs, backed by performance warranties.
+  \item \textbf{Engineering:} lead a 17-person team (full-time and contract) across ML engineering, backend
+        infrastructure, and DevOps; multi-scale cascade validation using 15+ proxy models (1M--500M params).
+  \item \textbf{Inference stack:} operate a production 8$\times$ H100 80GB GCP cluster (a3-highgpu-8g, RAID-0 NVMe)
+        running vLLM with Qwen3-235B-AWQ; end-to-end ownership from provisioning to endpoint.
+  \item \textbf{RL agent R\&D:} building a LangGraph-based penetration-testing automation agent on the H100
+        cluster; active RL security-agent research.
+  \item \textbf{Go-to-market:} securing enterprise AI-lab pilot programs; performance-based pricing capturing
+        30\% of customer cost savings.
+  \item \textbf{Stack:} Python\sep PyTorch\sep Rust\sep AWS (SageMaker, EC2, S3)\sep GCP\sep
+        Docker\sep Kubernetes\sep vLLM\sep LangGraph.
+\end{itemize}
+
+\role{Senior Software Engineer (Contract)}{Independent Consultant}{Nov 2022 -- Dec 2024}{Remote / Global}
+\begin{itemize}
+  \item Architected async Rust microservices serving 50K+ daily active users at single-digit-millisecond p99
+        (sub-millisecond service compute) for international fintech clients.
+  \item Built a production threat-detection system at 94\% accuracy; high-frequency trading dashboards;
+        15+ projects generating \$200K+ revenue at 100\% client satisfaction.
+  \item Reduced CI/CD build times 35\% (45m $\rightarrow$ 29m); optimized PostgreSQL schemas for 60\% query-latency reduction.
+  \item Rust API gateway: 10K+ req/s at sub-100ms p99 via async I/O and zero-copy optimizations.
+\end{itemize}
+
+\role{Software Engineer}{Tabtech Solutions}{Jan 2021 -- Oct 2022}{Remote / Hybrid}
+\begin{itemize}
+  \item Delivered 15+ custom B2B solutions for logistics and retail; RESTful APIs serving 10K+ concurrent
+        users with OAuth2/JWT.
+  \item Inventory-management systems processing 50K+ SKUs; 60\% query-performance improvement through schema redesign.
+\end{itemize}
+
+\role{Software Engineer (Contract)}{Enca Media Services}{Jan 2017 -- Dec 2019}{Lagos, Nigeria}
+\begin{itemize}
+  \item Engineered broadcast automation for Melody FM and Impact Africa Television; 99.9\% uptime on
+        mission-critical live signals.
+  \item Real-time transmission modules reducing manual station setup time by 40\%.
+\end{itemize}
+
+% ------------------------ RESEARCH / PAPERS --------------------------
+\section{Research \& Publications}
+\begin{itemize}
+  \item \textbf{Temporal Eigenstate Networks: Linear-Complexity Sequence Modeling via Spectral Decomposition}
+        (2025) --- \textit{Accepted, AAAI-26 AIDD Workshop}\sep
+        \href{https://openreview.net/forum?id=DGgt5mCyY3}{OpenReview}\sep arXiv.\\
+        O(T) vs O(T$^2$) transformers; 3--28$\times$ speedup on 512--8192-token sequences; 120$\times$ memory
+        reduction. Universal approximation proofs, Lyapunov stability analysis, comprehensive benchmarks.
+  \item \textbf{Resonance Neural Networks: Frequency-Domain Information Processing} (2025) ---
+        \textit{Preprint, OpenReview.}\\
+        O(n log n) FFT-based architecture; holographic memory encoding; 4--6$\times$ parameter efficiency vs
+        transformers. Gradient-stability and information-preservation proofs.
+  \item \textbf{Thermodynamic Manifold Alignment: Physics-Inspired Compositional Reasoning} (2025) ---
+        \textit{Preprint, OpenReview.}\\
+        Statistical-mechanics foundation; parameterized manifold energy minimization for compositional
+        reasoning; SCAN-benchmark evaluation with significance testing.
+\end{itemize}
+
+% --------------------------- PROJECTS --------------------------------
+\section{Major Technical Projects}
+\begin{itemize}
+  \project{Hate Language Runtime}{Rust} --- complete language: register-based VM with NaN-boxing (8-byte values),
+        Pratt parser, generational GC, 60+ bytecode ops, LSP, DAP, semver package manager, WASM build,
+        bytecode optimizer, 17-rule linter.
+  \project{High-Performance Code Editor}{C++17 / x86-64 ASM} --- gap buffer for O(1) cursor edits, AVX2/SSE4.2
+        SIMD search at 10\,GB/s, SIMD UTF-8 validation at 5\,GB/s, Dear ImGui renderer, multi-cursor;
+        $<$100ms startup, $<$50MB RAM.
+  \project{TocinLang Compiler}{C++17 / LLVM} --- statically-typed systems language to LLVM IR; goroutine-style
+        concurrency, NUMA-aware scheduling, fiber execution (4KB stacks, millions of goroutines),
+        work-stealing scheduler, V8 integration.
+  \project{TosinOS Kernel}{C / x86 ASM} --- 32-bit protected-mode monolithic kernel from scratch: custom MBR
+        bootloader, preemptive scheduler (16 priority levels), paging/heap allocator, VFS, IPC
+        (semaphores, message queues); sub-20KB footprint.
+  \project{EPOCH VCS}{C++ / Rust} --- distributed VCS on Merkle DAGs; SIMD-accelerated Myers diff (10$\times$
+        faster than Git) + Rust backend with Ed25519 signatures, Zstd delta compression, gRPC streaming;
+        50\% smaller repository storage.
+  \project{NavierFlow CFD Engine}{Python / Taichi} --- Navier-Stokes (Eulerian) and Lattice-Boltzmann solvers;
+        GPU-parallelized, real-time multi-phase visualization, k-$\varepsilon$ turbulence modeling.
+  \project{High-Performance Rust Gateway}{Rust} --- production API gateway: 10K+ req/s at sub-100ms p99 via
+        async I/O, zero-copy buffer management, connection pooling.
+\end{itemize}
+
+% ----------------------------- SKILLS --------------------------------
+\section{Technical Skills}
+\begin{itemize}
+  \item \textbf{Systems:} Rust\sep C++17/20\sep C\sep x86 Assembly (NASM)\sep LLVM IR\sep OS kernels\sep
+        compiler design\sep memory management\sep NUMA\sep SIMD (AVX2/SSE4.2).
+  \item \textbf{Language runtimes:} register-based VMs\sep NaN-boxing\sep generational GC\sep Pratt parsing\sep
+        bytecode compilation\sep LSP/DAP\sep custom allocators.
+  \item \textbf{AI/ML research:} PyTorch\sep CUDA\sep novel architectures\sep O(n log n) algorithms\sep
+        spectral methods\sep Lyapunov stability\sep universal approximation.
+  \item \textbf{ML inference:} vLLM\sep H100 cluster ops\sep AWQ/GPTQ quantization\sep PagedAttention\sep
+        tensor parallelism\sep LangGraph\sep CrewAI.
+  \item \textbf{Security:} CEH (EC-Council)\sep penetration testing\sep threat detection\sep cryptography
+        (Ed25519, BLAKE3)\sep OAuth2/JWT\sep adversarial ML.
+  \item \textbf{Infrastructure:} AWS (SageMaker, EC2, S3)\sep GCP\sep Docker\sep Kubernetes\sep CI/CD\sep
+        gRPC\sep microservices.
+  \item \textbf{Languages:} Python\sep Rust\sep C++\sep C\sep Go\sep TypeScript\sep JavaScript\sep
+        Assembly\sep SQL.
+\end{itemize}
+
+% --------------------------- EDUCATION -------------------------------
+\section{Education}
+\role{Redeemer's University (RUN)}{B.Sc. Psychology (Second Degree) --- AI Alignment, Cognitive Science, Statistical Methods}{Expected 2026}{Osun, Nigeria}
+\role{University of the People}{B.Sc. Computer Science, Honors --- Algorithms, Data Structures, Distributed Computing}{2019 -- 2023}{US-Accredited, Remote}
+
+% ------------------------ CERTS / RECOGNITION ------------------------
+\section{Certifications \& Recognition}
+\begin{itemize}
+  \item NVIDIA Inception Member\sep AAAI-26 Workshop Acceptance (Temporal Eigenstate Networks)\sep
+        Y Combinator Mentorship.
+  \item Certified Ethical Hacker --- CEH (EC-Council)\sep AWS Certified Cloud Practitioner\sep
+        Google Machine Learning Certificate\sep ALX Software Engineering.
+  \item ORCID: \href{https://orcid.org/0009-0001-2852-2885}{0009-0001-2852-2885}\sep
+        \href{https://openreview.net/profile?id=~Oluwatosin_Abioye_Afolabi2}{OpenReview profile}.
+\end{itemize}
+
+\end{document}
