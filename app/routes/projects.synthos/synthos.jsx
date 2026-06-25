@@ -136,7 +136,7 @@ export const SynthOS = () => {
                 training runs in hours.
               </ProjectSectionText>
               <ProjectSectionText>
-                As Founder & CEO, I lead an 11-person team across ML engineering, backend 
+                As Founder & CEO, I lead a 17-person team across ML engineering, backend
                 infrastructure, and DevOps — with a CTO/Co-founder handling Go, Rust, Python, 
                 and React-based engineering. The company has secured pilot programs with enterprise 
                 AI labs, with a performance-based pricing model that directly demonstrates value 

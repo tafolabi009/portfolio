@@ -35,13 +35,13 @@ const ProfileText = ({ visible, titleId }) => (
       control (<Link href="/projects/epoch-vcs">EPOCH VCS</Link>), and novel ML
       architectures — including AAAI 2026 Workshop–accepted research on O(n log n)
       spectral sequence modeling achieving 3–28× speedups over transformers. I've authored
-      6 research papers with rigorous mathematical proofs.
+      3 research papers with rigorous mathematical proofs.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       I hold a B.Sc. in Computer Science from the University of the People and a B.Sc. in
       Psychology from Redeemer's University. Certifications include AWS Cloud Practitioner,
       Certified Ethical Hacker (CEH), Google ML Certificate, and Software Engineering. I
-      lead an 11-person team at Genovo, directing R&D across{' '}
+      lead a 17-person team at Genovo, directing R&D across{' '}
       <Link href="/projects/synthos">SynthOS</Link>, AI agents, and next-generation
       model architectures.
     </Text>
