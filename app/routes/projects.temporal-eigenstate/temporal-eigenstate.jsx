@@ -1,9 +1,9 @@
 import backgroundSprLarge from '~/assets/spr-background-large.jpg';
 import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
 import backgroundSpr from '~/assets/spr-background.jpg';
-import imageEigenstateLarge from '~/assets/resonance-nn-large.jpg';
-import imageEigenstatePlaceholder from '~/assets/resonance-nn-placeholder.jpg';
-import imageEigenstate from '~/assets/resonance-nn.jpg';
+import imageEigenstateLarge from '~/assets/temporal-eigenstate-large.jpg';
+import imageEigenstatePlaceholder from '~/assets/temporal-eigenstate-placeholder.jpg';
+import imageEigenstate from '~/assets/temporal-eigenstate.jpg';
 import { Footer } from '~/components/footer';
 import { Link } from '~/components/link';
 import { useTheme } from '~/components/theme-provider';

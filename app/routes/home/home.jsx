@@ -10,6 +10,9 @@ import synthosTexture from '~/assets/synthos.jpg';
 import resonanceTextureLarge from '~/assets/resonance-nn-large.jpg';
 import resonanceTexturePlaceholder from '~/assets/resonance-nn-placeholder.jpg';
 import resonanceTexture from '~/assets/resonance-nn.jpg';
+import eigenstateTextureLarge from '~/assets/temporal-eigenstate-large.jpg';
+import eigenstateTexturePlaceholder from '~/assets/temporal-eigenstate-placeholder.jpg';
+import eigenstateTexture from '~/assets/temporal-eigenstate.jpg';
 import rtosTextureLarge from '~/assets/tosin-rtos-large.jpg';
 import rtosTexturePlaceholder from '~/assets/tosin-rtos-placeholder.jpg';
 import rtosTexture from '~/assets/tosin-rtos.jpg';
@@ -62,10 +65,11 @@ export const Home = () => {
   const projectFour = useRef();
   const projectFive = useRef();
   const projectSix = useRef();
+  const projectSeven = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, projectSix, details];
+    const sections = [intro, projectOne, projectTwo, projectSeven, projectThree, projectFour, projectFive, projectSix, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -150,9 +154,30 @@ export const Home = () => {
       />
       <ProjectSummary
         id="project-3"
+        sectionRef={projectSeven}
+        visible={visibleSections.includes(projectSeven.current)}
+        index={3}
+        title="Temporal Eigenstate Networks"
+        description="Linear-complexity (O(T)) sequence architecture replacing O(T²) attention via spectral decomposition. 3–28× faster with up to 120× less memory on 512–8192 tokens, backed by universal approximation and Lyapunov stability proofs. Accepted to the AAAI-26 AIDD Workshop."
+        buttonText="View project"
+        buttonLink="/projects/temporal-eigenstate"
+        model={{
+          type: 'laptop',
+          alt: 'Temporal Eigenstate Networks architecture diagram',
+          textures: [
+            {
+              srcSet: `${eigenstateTexture} 1280w, ${eigenstateTextureLarge} 2560w`,
+              placeholder: eigenstateTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-4"
+        alternate
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
-        index={3}
+        index={4}
         title="TosinLang — Systems Programming Language"
         description="A statically-typed language targeting LLVM IR with goroutine-style concurrency, NUMA-aware scheduling, and V8 integration. Built from scratch — Lexer, Parser, Semantic Analyzer, and code generator."
         buttonText="View project"
@@ -169,11 +194,10 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-4"
-        alternate
+        id="project-5"
         sectionRef={projectFour}
         visible={visibleSections.includes(projectFour.current)}
-        index={4}
+        index={5}
         title="tosin_rtos — Real-Time Operating System"
         description="A from-scratch x86 RTOS: custom 512-byte bootloader, preemptive scheduler with 16 priority levels, ~100-cycle context switches, best-fit heap allocator, IPC primitives, and interactive shell — all in ~20KB."
         buttonText="View project"
@@ -190,10 +214,11 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-5"
+        id="project-6"
+        alternate
         sectionRef={projectFive}
         visible={visibleSections.includes(projectFive.current)}
-        index={5}
+        index={6}
         title="EPOCH VCS — Distributed Version Control"
         description="Distributed VCS built in Rust using Merkle DAGs for history tracking, delta compression for large binary assets, and cryptographic verification for tamper-proof repositories."
         buttonText="View project"
@@ -210,11 +235,10 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-6"
-        alternate
+        id="project-7"
         sectionRef={projectSix}
         visible={visibleSections.includes(projectSix.current)}
-        index={6}
+        index={7}
         title="Taskr — Global Talent Marketplace"
         description="Flutter + Node.js marketplace connecting African professionals to international clients. AI-powered matching, cross-border payments (Stripe + Paystack), serving 5K+ concurrent users across Nigeria, US, UK."
         buttonText="View project"
