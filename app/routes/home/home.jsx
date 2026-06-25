@@ -48,7 +48,7 @@ export const links = () => {
 export const meta = () => {
   return baseMeta({
     title: 'Founder & CEO, Genovo Technologies | AI Researcher & Systems Engineer',
-    description: `Portfolio of ${config.name} — Founder & CEO at Genovo Technologies (NVIDIA Inception). AI researcher, systems engineer, and HPC specialist. 6 published research papers. Builder of compilers, operating systems, and novel ML architectures.`,
+    description: `Portfolio of ${config.name} — Founder & CEO at Genovo Technologies (NVIDIA Inception). AI researcher, systems engineer, and HPC specialist. 3 research papers. Builder of compilers, operating systems, and novel ML architectures.`,
   });
 };
 
@@ -134,7 +134,7 @@ export const Home = () => {
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
         title="Resonance Neural Networks"
-        description="Novel ML architecture replacing attention with FFT-based spectral processing. O(n log n) complexity, 3–28× speedup over transformers, 83% fewer parameters, 260K-token context. Accepted to AAAI 2026 Workshop."
+        description="Novel ML architecture replacing attention with FFT-based spectral processing. O(n log n) complexity, 83% fewer parameters, 260K-token context, with provable gradient stability. Preprint on OpenReview; companion architecture Temporal Eigenstate Networks accepted to the AAAI-26 AIDD Workshop."
         buttonText="View project"
         buttonLink="/projects/resonance-nn"
         model={{

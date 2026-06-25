@@ -33,8 +33,9 @@ const ProfileText = ({ visible, titleId }) => (
       <Link href="/projects/novalang">NovaLang</Link>), operating systems ({' '}
       <Link href="/projects/tosin-rtos">tosin_rtos</Link>), distributed version
       control (<Link href="/projects/epoch-vcs">EPOCH VCS</Link>), and novel ML
-      architectures — including AAAI 2026 Workshop–accepted research on O(n log n)
-      spectral sequence modeling achieving 3–28× speedups over transformers. I've authored
+      architectures — including AAAI 2026 Workshop–accepted research on O(T) linear-complexity
+      sequence modeling (Temporal Eigenstate Networks) achieving 3–28× speedups over
+      transformers. I've authored
       3 research papers with rigorous mathematical proofs.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">

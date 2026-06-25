@@ -26,7 +26,7 @@ import styles from './resonance-nn.module.css';
 
 const title = 'Resonance Neural Networks';
 const description =
-  'A novel neural network architecture replacing attention mechanisms with FFT-based spectral processing. Achieves O(n log n) complexity with 3–28× speedup over transformers, 83% fewer parameters, and 260K–300K token context windows. Accepted to AAAI 2026 Workshop.';
+  'A novel neural network architecture replacing attention mechanisms with FFT-based spectral processing. Achieves O(n log n) complexity with 83% fewer parameters and 260K–300K token context windows, with provable gradient-stability guarantees. Preprint on OpenReview; companion architecture Temporal Eigenstate Networks accepted to the AAAI-26 AIDD Workshop (3–28× speedups).';
 const roles = [
   'Lead Researcher',
   'Architecture Design',
@@ -123,15 +123,17 @@ export const ResonanceNN = () => {
             <ProjectSectionContent>
               <ProjectSectionHeading>Research results</ProjectSectionHeading>
               <ProjectSectionText>
-                The work was accepted to the AAAI 2026 Workshop on Linear-Complexity Sequence 
-                Modeling via Spectral Decomposition — demonstrating 3–28× speedups over 
-                transformer baselines across standard benchmarks while maintaining or improving 
-                accuracy.
+                Resonance Neural Networks is published as a preprint on OpenReview
+                (Frequency-Domain Information Processing), with provable gradient-stability and
+                information-preservation guarantees. Its companion architecture, Temporal Eigenstate
+                Networks (O(T) linear complexity), was accepted to the AAAI-26 AIDD Workshop —
+                demonstrating 3–28× speedups over transformer baselines across standard benchmarks
+                while maintaining or improving accuracy.
               </ProjectSectionText>
               <ProjectSectionText>
-                This is part of a broader research program at Genovo Technologies with 6 published 
-                papers, 3 focused on novel architectures outperforming transformers, all with 
-                strong mathematical and theoretical foundations including provable approximation 
+                This is part of a broader research program at Genovo Technologies spanning 3
+                research papers on novel architectures that outperform transformers, all with
+                strong mathematical and theoretical foundations including provable approximation
                 guarantees.
               </ProjectSectionText>
             </ProjectSectionContent>
