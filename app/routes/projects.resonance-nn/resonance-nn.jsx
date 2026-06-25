@@ -125,8 +125,9 @@ export const ResonanceNN = () => {
               <ProjectSectionText>
                 Resonance Neural Networks is published as a preprint on OpenReview
                 (Frequency-Domain Information Processing), with provable gradient-stability and
-                information-preservation guarantees. Its companion architecture, Temporal Eigenstate
-                Networks (O(T) linear complexity), was accepted to the AAAI-26 AIDD Workshop —
+                information-preservation guarantees. Its companion architecture,{' '}
+                <Link href="/projects/temporal-eigenstate">Temporal Eigenstate Networks</Link>{' '}
+                (O(T) linear complexity), was accepted to the AAAI-26 AIDD Workshop —
                 demonstrating 3–28× speedups over transformer baselines across standard benchmarks
                 while maintaining or improving accuracy.
               </ProjectSectionText>
