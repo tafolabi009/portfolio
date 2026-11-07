@@ -6,16 +6,12 @@ import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
-import { useInterval, usePrevious, useScrollToHash } from '~/hooks';
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { useHasMounted, useInterval, usePrevious, useScrollToHash } from '~/hooks';
+import { useEffect, useState } from 'react';
 import { cssProps } from '~/utils/style';
 import config from '~/config.json';
-import { useHydrated } from '~/hooks/useHydrated';
+import { DisplacementSphere } from './displacement-sphere';
 import styles from './intro.module.css';
-
-const DisplacementSphere = lazy(() =>
-  import('./displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
-);
 
 export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const { theme } = useTheme();
@@ -28,7 +24,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const currentDiscipline = disciplines.find((item, index) => index === disciplineIndex);
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
-  const isHydrated = useHydrated();
+  const hasMounted = useHasMounted();
 
   useInterval(
     () => {
@@ -63,11 +59,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       <Transition in key={theme} timeout={3000}>
         {({ visible, status }) => (
           <>
-            {isHydrated && (
-              <Suspense>
-                <DisplacementSphere />
-              </Suspense>
-            )}
+            {hasMounted && <DisplacementSphere />}
             <header className={styles.text}>
               <h1 className={styles.name} data-visible={visible} id={titleId}>
                 <DecoderText text={config.name} delay={500} />
